@@ -1,6 +1,6 @@
-
 import os
 import bpy
+
 renderscript = bpy.data.texts["renderscript.py"].as_module()
 
 high_res = (1920, 1080)
@@ -11,10 +11,13 @@ low_res = (720, 480)
 bend_configuration = {"high": [(-35, 35), (0.45, 0.6), (30, 90), (0, 0)], "medium": [(-40, 40), (0.47, 0.7), (-30, 30), (0, 0)],
                       "low": [(-20, 20), (0.5, 0.8), (-90, -30), (0, 0)], "random": [(-40, 40), (0.45, 0.8), (-90, 90), (0, 0)]}
 
+carve_configuration = {"high": [(-20, 20), (0.5, 0.7), (0, 0), (0.5, 0.8)], "medium": [(-40, 40), (0.47, 0.7), (0, 0), (0.1, 0.5)],
+                       "low": [(-30, 30), (0.5, 0.8), (0, 0), (-0.5, 0.1)], "random": [(-40, 40), (0.47, 0.8), (0, 0), (-0.5, 0.5)]}
+
 light_configuration = {"high": [20, 35], "medium": [10, 20], "low": [1, 10], "random": [1, 35]}
 
 
-def bend(img, bbs_file, resolution=(1920, 1080), deform_axis="X", level="high", light_mod="random", quantity=20): # 10 -> 333 
+def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", light_mod="random", quantity=20):
     """
     Generate bend images on the two side of image according to the given
     axi( X or Z). Z axi bend image across the length and X axi across the width.
@@ -43,12 +46,44 @@ def bend(img, bbs_file, resolution=(1920, 1080), deform_axis="X", level="high", 
     img_generator.set_scene(img)
     val = bend_configuration[level]
     mod = light_configuration[light_mod]
-    img_generator.main_rendering_loop(bbs_file, deform_axis, val, mod, quantity)
+    img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
+
+def carve(img, bbs_file, resolution=high_res, level="high", light_mod="random", quantity=20):
+    """
+
+    @param img:
+    @type img:
+    @param bbs_file:
+    @type bbs_file:
+    @param resolution:
+    @type resolution:
+    @param level:
+    @type level:
+    @param light_mod:
+    @type light_mod:
+    @param quantity:
+    @type quantity:
+    """
+    try:
+        is_valid_path(img)
+        is_valid_path(bbs_file)
+    except:
+        print("Path doesn't exist")
+    # TODO check if parameter are valid res & axi & light & quantity
+    img_generator = renderscript.ImageGenerator(resolution)
+    img_generator.set_scene(img)
+    val = carve_configuration[level]
+    mod = light_configuration[light_mod]
+    img_generator.main_rendering_loop(bbs_file, val, mod, quantity)
+
+
+
 
 
 def is_valid_path(path):
     if not os.path.exists(path):
         raise Exception(f"The file at {path} doesn't exist")
 
+
 if __name__ == "__main__":
-    bend(r"C:\Users\safi_\Desktop\project\inputs\input_3.png",r"C:\Users\safi_\Desktop\project\inputs\input_3.json")
+    carve(r"C:\Users\safi_\Desktop\project\inputs\input_3.png", r"C:\Users\safi_\Desktop\project\inputs\input_3.json")

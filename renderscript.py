@@ -94,7 +94,7 @@ class ImageGenerator:
         self.receipt_handle.location.z = diff + 0.001
         bpy.context.view_layer.update()
 
-    def main_rendering_loop(self, bbs_file, deform_axis, level, light_mod, quantity):
+    def main_rendering_loop(self, bbs_file, level, light_mod, quantity, deform_axis='X'):
         '''
         This function represent the main algorithm explained in the Tutorial, it accepts the
         rotation step as input, and outputs the images and the labels to the above specified locations.
