@@ -182,8 +182,8 @@ def bounding_box_for_points(points):
 
 def norm_img_to_render_space(render_size, coord):
     coord = (
-        coord[0] * render_size[0],
-        (1.0 - coord[1]) * render_size[1]
+        round(coord[0] * render_size[0]),
+        round((1.0 - coord[1]) * render_size[1])
     )
     return coord
 
