@@ -54,6 +54,10 @@ class ImageGenerator:
         self.set_z_to_floor()
         bpy.context.view_layer.update()
 
+    def set_subdivision(self):
+        bpy.context.object.modifiers["Subdivision"].levels = 0
+        bpy.context.object.modifiers["Subdivision"].render_levels = 0
+
     def reset_modifiers(self):
         bpy.context.object.modifiers["SimpleDeform"].angle = 0
         bpy.context.object.modifiers["SimpleDeform"].deform_axis = 'X'
