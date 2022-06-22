@@ -48,7 +48,7 @@ def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", ligh
     mod = light_configuration[light_mod]
     img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
 
-def carve(img, bbs_file, resolution=high_res, level="high", light_mod="random", quantity=20):
+def curve(img, bbs_file, resolution=high_res, level="medium", light_mod="random", quantity=20):
     """
 
     @param img:
@@ -86,4 +86,4 @@ def is_valid_path(path):
 
 
 if __name__ == "__main__":
-    carve(r"C:\Users\safi_\Desktop\project\inputs\input_3.png", r"C:\Users\safi_\Desktop\project\inputs\input_3.json")
+    curve(r"C:\Users\safi_\Desktop\project\inputs\input_1.png", r"C:\Users\safi_\Desktop\project\inputs\input_1.json")

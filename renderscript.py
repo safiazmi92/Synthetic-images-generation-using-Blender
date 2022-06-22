@@ -232,7 +232,7 @@ class ImageGenerator:
         image_name = str(count_f_name) + '_bbs.png'
         path = self.images_filepath + '/' + image_name
         im.save(path)
-
+    """
     def get_bbs_input(self, bbs_input):
         data = json.load(bbs_input)
         letter_bbs_coord = []
@@ -247,11 +247,24 @@ class ImageGenerator:
                 bl = Vector(self.normalize_bb((coord[i], coord[i + 3])))
                 letter_bbs_coord.append([ul, ur, br, bl])
         return letter_bbs_coord
-
+    """
+    def get_bbs_input(self, bbs_input):
+        data = json.load(bbs_input)
+        letter_bbs_coord = []
+        for image_dic in data['images']:
+            image_path = image_dic['image_path']
+            for word_dic in image_dic['words']:
+                word_polygon = []
+                for polygon_dic in word_dic['polygon']:
+                    coord = Vector(self.normalize_bb((polygon_dic['x'],polygon_dic['y'])))
+                    word_polygon.append(coord)
+                letter_bbs_coord.append(word_polygon)
+        return letter_bbs_coord
+    
     def normalize_bb(slef, coord):
         x, y = coord
-        x = x / 1024
-        y = 1 - (y / 512)
+        x = x / 736
+        y = 1 - (y / 736)
         return (x, y)
 
     def bend(self, deform_axis, level):

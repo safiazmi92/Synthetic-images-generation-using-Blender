@@ -63,10 +63,10 @@ def render(size,bbs_coords):
             #print(img_pos)
             raw_bbs.append(img_pos)
         #ul, br = bounding_box_for_points(raw_bbs)
-        ul = norm_img_to_render_space(size, raw_bbs[0])
-        ur = norm_img_to_render_space(size, raw_bbs[1])
-        br = norm_img_to_render_space(size, raw_bbs[2])
-        bl = norm_img_to_render_space(size, raw_bbs[3])
+        bl = norm_img_to_render_space(size, raw_bbs[0])
+        ul = norm_img_to_render_space(size, raw_bbs[1])
+        ur = norm_img_to_render_space(size, raw_bbs[2])
+        br = norm_img_to_render_space(size, raw_bbs[3])
         image_bbs.append([ul,ur,br,bl])
     return image_bbs
 

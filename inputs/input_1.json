@@ -1,0 +1,3378 @@
+{
+    "images": [
+        {
+            "image_path": "2022-05-23_12:04:43.97177577164047.png",
+            "category": "TestSet_NoisyDocuments",
+            "sub-category": "Customer",
+            "words": [
+                {
+                    "location": {
+                        "width": 27,
+                        "height": 25,
+                        "left": 10,
+                        "top": 5
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 30
+                        },
+                        {
+                            "x": 10,
+                            "y": 5
+                        },
+                        {
+                            "x": 37,
+                            "y": 5
+                        },
+                        {
+                            "x": 37,
+                            "y": 30
+                        }
+                    ],
+                    "word": "of",
+                    "confidence": 1.0,
+                    "id": "0",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 49,
+                        "height": 23,
+                        "left": 49,
+                        "top": 6
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 49,
+                            "y": 29
+                        },
+                        {
+                            "x": 49,
+                            "y": 6
+                        },
+                        {
+                            "x": 98,
+                            "y": 6
+                        },
+                        {
+                            "x": 98,
+                            "y": 29
+                        }
+                    ],
+                    "word": "the",
+                    "confidence": 1.0,
+                    "id": "1",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 95,
+                        "height": 30,
+                        "left": 110,
+                        "top": 5
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 110,
+                            "y": 35
+                        },
+                        {
+                            "x": 110,
+                            "y": 5
+                        },
+                        {
+                            "x": 205,
+                            "y": 5
+                        },
+                        {
+                            "x": 205,
+                            "y": 35
+                        }
+                    ],
+                    "word": "elderly",
+                    "confidence": 1.0,
+                    "id": "2",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 85,
+                        "height": 31,
+                        "left": 10,
+                        "top": 39
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 70
+                        },
+                        {
+                            "x": 10,
+                            "y": 39
+                        },
+                        {
+                            "x": 95,
+                            "y": 39
+                        },
+                        {
+                            "x": 95,
+                            "y": 70
+                        }
+                    ],
+                    "word": "Angles",
+                    "confidence": 1.0,
+                    "id": "3",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 25,
+                        "height": 20,
+                        "left": 107,
+                        "top": 42
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 107,
+                            "y": 62
+                        },
+                        {
+                            "x": 107,
+                            "y": 42
+                        },
+                        {
+                            "x": 132,
+                            "y": 42
+                        },
+                        {
+                            "x": 132,
+                            "y": 62
+                        }
+                    ],
+                    "word": "In",
+                    "confidence": 1.0,
+                    "id": "4",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 50,
+                        "height": 21,
+                        "left": 144,
+                        "top": 41
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 144,
+                            "y": 62
+                        },
+                        {
+                            "x": 144,
+                            "y": 41
+                        },
+                        {
+                            "x": 194,
+                            "y": 41
+                        },
+                        {
+                            "x": 194,
+                            "y": 62
+                        }
+                    ],
+                    "word": "The",
+                    "confidence": 1.0,
+                    "id": "5",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 101,
+                        "height": 30,
+                        "left": 10,
+                        "top": 74
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 104
+                        },
+                        {
+                            "x": 10,
+                            "y": 74
+                        },
+                        {
+                            "x": 111,
+                            "y": 74
+                        },
+                        {
+                            "x": 111,
+                            "y": 104
+                        }
+                    ],
+                    "word": "running",
+                    "confidence": 1.0,
+                    "id": "6",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 101,
+                        "height": 30,
+                        "left": 123,
+                        "top": 74
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 123,
+                            "y": 104
+                        },
+                        {
+                            "x": 123,
+                            "y": 74
+                        },
+                        {
+                            "x": 224,
+                            "y": 74
+                        },
+                        {
+                            "x": 224,
+                            "y": 104
+                        }
+                    ],
+                    "word": "running",
+                    "confidence": 1.0,
+                    "id": "7",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 50,
+                        "height": 21,
+                        "left": 10,
+                        "top": 109
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 130
+                        },
+                        {
+                            "x": 10,
+                            "y": 109
+                        },
+                        {
+                            "x": 60,
+                            "y": 109
+                        },
+                        {
+                            "x": 60,
+                            "y": 130
+                        }
+                    ],
+                    "word": "The",
+                    "confidence": 1.0,
+                    "id": "8",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 110,
+                        "height": 25,
+                        "left": 72,
+                        "top": 107
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 72,
+                            "y": 132
+                        },
+                        {
+                            "x": 72,
+                            "y": 107
+                        },
+                        {
+                            "x": 182,
+                            "y": 107
+                        },
+                        {
+                            "x": 182,
+                            "y": 132
+                        }
+                    ],
+                    "word": "Mclaren",
+                    "confidence": 1.0,
+                    "id": "9",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 156,
+                        "height": 13,
+                        "left": 255,
+                        "top": 3
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 16
+                        },
+                        {
+                            "x": 255,
+                            "y": 3
+                        },
+                        {
+                            "x": 411,
+                            "y": 3
+                        },
+                        {
+                            "x": 411,
+                            "y": 16
+                        }
+                    ],
+                    "word": "sumepet@fadanif.edu",
+                    "confidence": 1.0,
+                    "id": "10",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 18,
+                        "height": 10,
+                        "left": 423,
+                        "top": 3
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 423,
+                            "y": 13
+                        },
+                        {
+                            "x": 423,
+                            "y": 3
+                        },
+                        {
+                            "x": 441,
+                            "y": 3
+                        },
+                        {
+                            "x": 441,
+                            "y": 13
+                        }
+                    ],
+                    "word": "32",
+                    "confidence": 1.0,
+                    "id": "11",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 28,
+                        "height": 7,
+                        "left": 255,
+                        "top": 20
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 27
+                        },
+                        {
+                            "x": 255,
+                            "y": 20
+                        },
+                        {
+                            "x": 283,
+                            "y": 20
+                        },
+                        {
+                            "x": 283,
+                            "y": 27
+                        }
+                    ],
+                    "word": "new",
+                    "confidence": 1.0,
+                    "id": "12",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 22,
+                        "height": 10,
+                        "left": 295,
+                        "top": 17
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 295,
+                            "y": 27
+                        },
+                        {
+                            "x": 295,
+                            "y": 17
+                        },
+                        {
+                            "x": 317,
+                            "y": 17
+                        },
+                        {
+                            "x": 317,
+                            "y": 27
+                        }
+                    ],
+                    "word": "bei",
+                    "confidence": 1.0,
+                    "id": "13",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 18,
+                        "height": 10,
+                        "left": 329,
+                        "top": 17
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 329,
+                            "y": 27
+                        },
+                        {
+                            "x": 329,
+                            "y": 17
+                        },
+                        {
+                            "x": 347,
+                            "y": 17
+                        },
+                        {
+                            "x": 347,
+                            "y": 27
+                        }
+                    ],
+                    "word": "ist",
+                    "confidence": 1.0,
+                    "id": "14",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 20,
+                        "height": 10,
+                        "left": 359,
+                        "top": 17
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 359,
+                            "y": 27
+                        },
+                        {
+                            "x": 359,
+                            "y": 17
+                        },
+                        {
+                            "x": 379,
+                            "y": 17
+                        },
+                        {
+                            "x": 379,
+                            "y": 27
+                        }
+                    ],
+                    "word": "GB",
+                    "confidence": 1.0,
+                    "id": "15",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 43,
+                        "height": 10,
+                        "left": 391,
+                        "top": 17
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 391,
+                            "y": 27
+                        },
+                        {
+                            "x": 391,
+                            "y": 17
+                        },
+                        {
+                            "x": 434,
+                            "y": 17
+                        },
+                        {
+                            "x": 434,
+                            "y": 27
+                        }
+                    ],
+                    "word": "vielen",
+                    "confidence": 1.0,
+                    "id": "16",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 9,
+                        "height": 10,
+                        "left": 446,
+                        "top": 17
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 446,
+                            "y": 27
+                        },
+                        {
+                            "x": 446,
+                            "y": 17
+                        },
+                        {
+                            "x": 455,
+                            "y": 17
+                        },
+                        {
+                            "x": 455,
+                            "y": 27
+                        }
+                    ],
+                    "word": "3",
+                    "confidence": 1.0,
+                    "id": "17",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 7,
+                        "height": 7,
+                        "left": 467,
+                        "top": 20
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 467,
+                            "y": 27
+                        },
+                        {
+                            "x": 467,
+                            "y": 20
+                        },
+                        {
+                            "x": 474,
+                            "y": 20
+                        },
+                        {
+                            "x": 474,
+                            "y": 27
+                        }
+                    ],
+                    "word": "z",
+                    "confidence": 1.0,
+                    "id": "18",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 68,
+                        "height": 11,
+                        "left": 255,
+                        "top": 31
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 42
+                        },
+                        {
+                            "x": 255,
+                            "y": 31
+                        },
+                        {
+                            "x": 323,
+                            "y": 31
+                        },
+                        {
+                            "x": 323,
+                            "y": 42
+                        }
+                    ],
+                    "word": "07/03/18",
+                    "confidence": 1.0,
+                    "id": "19",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 18,
+                        "height": 10,
+                        "left": 335,
+                        "top": 31
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 335,
+                            "y": 41
+                        },
+                        {
+                            "x": 335,
+                            "y": 31
+                        },
+                        {
+                            "x": 353,
+                            "y": 31
+                        },
+                        {
+                            "x": 353,
+                            "y": 41
+                        }
+                    ],
+                    "word": "56",
+                    "confidence": 1.0,
+                    "id": "20",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 18,
+                        "height": 10,
+                        "left": 365,
+                        "top": 31
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 365,
+                            "y": 41
+                        },
+                        {
+                            "x": 365,
+                            "y": 31
+                        },
+                        {
+                            "x": 383,
+                            "y": 31
+                        },
+                        {
+                            "x": 383,
+                            "y": 41
+                        }
+                    ],
+                    "word": "82",
+                    "confidence": 1.0,
+                    "id": "21",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 39,
+                        "height": 14,
+                        "left": 395,
+                        "top": 30
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 395,
+                            "y": 44
+                        },
+                        {
+                            "x": 395,
+                            "y": 30
+                        },
+                        {
+                            "x": 434,
+                            "y": 30
+                        },
+                        {
+                            "x": 434,
+                            "y": 44
+                        }
+                    ],
+                    "word": "(388)",
+                    "confidence": 1.0,
+                    "id": "22",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 195,
+                        "height": 25,
+                        "left": 500,
+                        "top": 6
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 31
+                        },
+                        {
+                            "x": 500,
+                            "y": 6
+                        },
+                        {
+                            "x": 695,
+                            "y": 6
+                        },
+                        {
+                            "x": 695,
+                            "y": 31
+                        }
+                    ],
+                    "word": "MERCADO.",
+                    "confidence": 1.0,
+                    "id": "23",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 47,
+                        "height": 25,
+                        "left": 500,
+                        "top": 39
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 64
+                        },
+                        {
+                            "x": 500,
+                            "y": 39
+                        },
+                        {
+                            "x": 547,
+                            "y": 39
+                        },
+                        {
+                            "x": 547,
+                            "y": 64
+                        }
+                    ],
+                    "word": "95",
+                    "confidence": 1.0,
+                    "id": "24",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 86,
+                        "height": 25,
+                        "left": 556,
+                        "top": 39
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 556,
+                            "y": 64
+                        },
+                        {
+                            "x": 556,
+                            "y": 39
+                        },
+                        {
+                            "x": 642,
+                            "y": 39
+                        },
+                        {
+                            "x": 642,
+                            "y": 64
+                        }
+                    ],
+                    "word": "SSID",
+                    "confidence": 1.0,
+                    "id": "25",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 46,
+                        "height": 25,
+                        "left": 651,
+                        "top": 44
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 651,
+                            "y": 69
+                        },
+                        {
+                            "x": 651,
+                            "y": 44
+                        },
+                        {
+                            "x": 697,
+                            "y": 44
+                        },
+                        {
+                            "x": 697,
+                            "y": 69
+                        }
+                    ],
+                    "word": "pp",
+                    "confidence": 1.0,
+                    "id": "26",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 185,
+                        "height": 25,
+                        "left": 500,
+                        "top": 71
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 96
+                        },
+                        {
+                            "x": 500,
+                            "y": 71
+                        },
+                        {
+                            "x": 685,
+                            "y": 71
+                        },
+                        {
+                            "x": 685,
+                            "y": 96
+                        }
+                    ],
+                    "word": "Kabelnetz",
+                    "confidence": 1.0,
+                    "id": "27",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 45,
+                        "height": 25,
+                        "left": 500,
+                        "top": 105
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 130
+                        },
+                        {
+                            "x": 500,
+                            "y": 105
+                        },
+                        {
+                            "x": 545,
+                            "y": 105
+                        },
+                        {
+                            "x": 545,
+                            "y": 130
+                        }
+                    ],
+                    "word": "87",
+                    "confidence": 1.0,
+                    "id": "28",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 139,
+                        "height": 30,
+                        "left": 554,
+                        "top": 105
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 554,
+                            "y": 135
+                        },
+                        {
+                            "x": 554,
+                            "y": 105
+                        },
+                        {
+                            "x": 693,
+                            "y": 105
+                        },
+                        {
+                            "x": 693,
+                            "y": 135
+                        }
+                    ],
+                    "word": "716,930",
+                    "confidence": 1.0,
+                    "id": "29",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 10,
+                        "height": 24,
+                        "left": 702,
+                        "top": 105
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 702,
+                            "y": 129
+                        },
+                        {
+                            "x": 702,
+                            "y": 105
+                        },
+                        {
+                            "x": 712,
+                            "y": 105
+                        },
+                        {
+                            "x": 712,
+                            "y": 129
+                        }
+                    ],
+                    "word": "I",
+                    "confidence": 1.0,
+                    "id": "30",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 174,
+                        "height": 35,
+                        "left": 500,
+                        "top": 128
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 163
+                        },
+                        {
+                            "x": 500,
+                            "y": 128
+                        },
+                        {
+                            "x": 674,
+                            "y": 128
+                        },
+                        {
+                            "x": 674,
+                            "y": 163
+                        }
+                    ],
+                    "word": "S\u00c9JOURS",
+                    "confidence": 1.0,
+                    "id": "31",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 187,
+                        "height": 22,
+                        "left": 10,
+                        "top": 250
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 272
+                        },
+                        {
+                            "x": 10,
+                            "y": 250
+                        },
+                        {
+                            "x": 197,
+                            "y": 250
+                        },
+                        {
+                            "x": 197,
+                            "y": 272
+                        }
+                    ],
+                    "word": "REVIEWER",
+                    "confidence": 1.0,
+                    "id": "32",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 69,
+                        "height": 22,
+                        "left": 10,
+                        "top": 312
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 334
+                        },
+                        {
+                            "x": 10,
+                            "y": 312
+                        },
+                        {
+                            "x": 79,
+                            "y": 312
+                        },
+                        {
+                            "x": 79,
+                            "y": 334
+                        }
+                    ],
+                    "word": "THE",
+                    "confidence": 1.0,
+                    "id": "33",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 109,
+                        "height": 22,
+                        "left": 111,
+                        "top": 312
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 111,
+                            "y": 334
+                        },
+                        {
+                            "x": 111,
+                            "y": 312
+                        },
+                        {
+                            "x": 220,
+                            "y": 312
+                        },
+                        {
+                            "x": 220,
+                            "y": 334
+                        }
+                    ],
+                    "word": "VINYL",
+                    "confidence": 1.0,
+                    "id": "34",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 216,
+                        "height": 31,
+                        "left": 10,
+                        "top": 365
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 396
+                        },
+                        {
+                            "x": 10,
+                            "y": 365
+                        },
+                        {
+                            "x": 226,
+                            "y": 365
+                        },
+                        {
+                            "x": 226,
+                            "y": 396
+                        }
+                    ],
+                    "word": "M\u00c9DI\u00c9VAUX",
+                    "confidence": 1.0,
+                    "id": "35",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 61,
+                        "height": 15,
+                        "left": 255,
+                        "top": 248
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 263
+                        },
+                        {
+                            "x": 255,
+                            "y": 248
+                        },
+                        {
+                            "x": 316,
+                            "y": 248
+                        },
+                        {
+                            "x": 316,
+                            "y": 263
+                        }
+                    ],
+                    "word": "diese",
+                    "confidence": 1.0,
+                    "id": "36",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 35,
+                        "height": 15,
+                        "left": 323,
+                        "top": 248
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 323,
+                            "y": 263
+                        },
+                        {
+                            "x": 323,
+                            "y": 248
+                        },
+                        {
+                            "x": 358,
+                            "y": 248
+                        },
+                        {
+                            "x": 358,
+                            "y": 263
+                        }
+                    ],
+                    "word": "ins",
+                    "confidence": 1.0,
+                    "id": "37",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 38,
+                        "height": 15,
+                        "left": 365,
+                        "top": 248
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 365,
+                            "y": 263
+                        },
+                        {
+                            "x": 365,
+                            "y": 248
+                        },
+                        {
+                            "x": 403,
+                            "y": 248
+                        },
+                        {
+                            "x": 403,
+                            "y": 263
+                        }
+                    ],
+                    "word": "Ihr",
+                    "confidence": 1.0,
+                    "id": "38",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 39,
+                        "height": 15,
+                        "left": 410,
+                        "top": 248
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 410,
+                            "y": 263
+                        },
+                        {
+                            "x": 410,
+                            "y": 248
+                        },
+                        {
+                            "x": 449,
+                            "y": 248
+                        },
+                        {
+                            "x": 449,
+                            "y": 263
+                        }
+                    ],
+                    "word": "wir",
+                    "confidence": 1.0,
+                    "id": "39",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 23,
+                        "height": 17,
+                        "left": 456,
+                        "top": 249
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 456,
+                            "y": 266
+                        },
+                        {
+                            "x": 456,
+                            "y": 249
+                        },
+                        {
+                            "x": 479,
+                            "y": 249
+                        },
+                        {
+                            "x": 479,
+                            "y": 266
+                        }
+                    ],
+                    "word": "1,",
+                    "confidence": 1.0,
+                    "id": "40",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 43,
+                        "height": 14,
+                        "left": 255,
+                        "top": 268
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 282
+                        },
+                        {
+                            "x": 255,
+                            "y": 268
+                        },
+                        {
+                            "x": 298,
+                            "y": 268
+                        },
+                        {
+                            "x": 298,
+                            "y": 282
+                        }
+                    ],
+                    "word": "Haz",
+                    "confidence": 1.0,
+                    "id": "41",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 134,
+                        "height": 14,
+                        "left": 305,
+                        "top": 268
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 305,
+                            "y": 282
+                        },
+                        {
+                            "x": 305,
+                            "y": 268
+                        },
+                        {
+                            "x": 439,
+                            "y": 268
+                        },
+                        {
+                            "x": 439,
+                            "y": 282
+                        }
+                    ],
+                    "word": "TAILANDIA",
+                    "confidence": 1.0,
+                    "id": "42",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 37,
+                        "height": 15,
+                        "left": 255,
+                        "top": 286
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 301
+                        },
+                        {
+                            "x": 255,
+                            "y": 286
+                        },
+                        {
+                            "x": 292,
+                            "y": 286
+                        },
+                        {
+                            "x": 292,
+                            "y": 301
+                        }
+                    ],
+                    "word": "the",
+                    "confidence": 1.0,
+                    "id": "43",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 16,
+                        "height": 14,
+                        "left": 299,
+                        "top": 287
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 299,
+                            "y": 301
+                        },
+                        {
+                            "x": 299,
+                            "y": 287
+                        },
+                        {
+                            "x": 315,
+                            "y": 287
+                        },
+                        {
+                            "x": 315,
+                            "y": 301
+                        }
+                    ],
+                    "word": "Y",
+                    "confidence": 1.0,
+                    "id": "44",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 16,
+                        "height": 14,
+                        "left": 322,
+                        "top": 287
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 322,
+                            "y": 301
+                        },
+                        {
+                            "x": 322,
+                            "y": 287
+                        },
+                        {
+                            "x": 338,
+                            "y": 287
+                        },
+                        {
+                            "x": 338,
+                            "y": 301
+                        }
+                    ],
+                    "word": "O",
+                    "confidence": 1.0,
+                    "id": "45",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 101,
+                        "height": 19,
+                        "left": 345,
+                        "top": 286
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 345,
+                            "y": 305
+                        },
+                        {
+                            "x": 345,
+                            "y": 286
+                        },
+                        {
+                            "x": 446,
+                            "y": 286
+                        },
+                        {
+                            "x": 446,
+                            "y": 305
+                        }
+                    ],
+                    "word": "repeated",
+                    "confidence": 1.0,
+                    "id": "46",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 160,
+                        "height": 20,
+                        "left": 500,
+                        "top": 249
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 269
+                        },
+                        {
+                            "x": 500,
+                            "y": 249
+                        },
+                        {
+                            "x": 660,
+                            "y": 249
+                        },
+                        {
+                            "x": 660,
+                            "y": 269
+                        }
+                    ],
+                    "word": "prominent",
+                    "confidence": 1.0,
+                    "id": "47",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 89,
+                        "height": 20,
+                        "left": 500,
+                        "top": 270
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 290
+                        },
+                        {
+                            "x": 500,
+                            "y": 270
+                        },
+                        {
+                            "x": 589,
+                            "y": 270
+                        },
+                        {
+                            "x": 589,
+                            "y": 290
+                        }
+                    ],
+                    "word": "asian",
+                    "confidence": 1.0,
+                    "id": "48",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 60,
+                        "height": 20,
+                        "left": 604,
+                        "top": 270
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 604,
+                            "y": 290
+                        },
+                        {
+                            "x": 604,
+                            "y": 270
+                        },
+                        {
+                            "x": 664,
+                            "y": 270
+                        },
+                        {
+                            "x": 664,
+                            "y": 290
+                        }
+                    ],
+                    "word": "and",
+                    "confidence": 1.0,
+                    "id": "49",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 178,
+                        "height": 20,
+                        "left": 500,
+                        "top": 291
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 311
+                        },
+                        {
+                            "x": 500,
+                            "y": 291
+                        },
+                        {
+                            "x": 678,
+                            "y": 291
+                        },
+                        {
+                            "x": 678,
+                            "y": 311
+                        }
+                    ],
+                    "word": "Knowledge",
+                    "confidence": 1.0,
+                    "id": "50",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 101,
+                        "height": 20,
+                        "left": 500,
+                        "top": 312
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 332
+                        },
+                        {
+                            "x": 500,
+                            "y": 312
+                        },
+                        {
+                            "x": 601,
+                            "y": 312
+                        },
+                        {
+                            "x": 601,
+                            "y": 332
+                        }
+                    ],
+                    "word": "noting",
+                    "confidence": 1.0,
+                    "id": "51",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 54,
+                        "height": 20,
+                        "left": 616,
+                        "top": 312
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 616,
+                            "y": 332
+                        },
+                        {
+                            "x": 616,
+                            "y": 312
+                        },
+                        {
+                            "x": 670,
+                            "y": 312
+                        },
+                        {
+                            "x": 670,
+                            "y": 332
+                        }
+                    ],
+                    "word": "the",
+                    "confidence": 1.0,
+                    "id": "52",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 60,
+                        "height": 20,
+                        "left": 500,
+                        "top": 333
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 353
+                        },
+                        {
+                            "x": 500,
+                            "y": 333
+                        },
+                        {
+                            "x": 560,
+                            "y": 333
+                        },
+                        {
+                            "x": 560,
+                            "y": 353
+                        }
+                    ],
+                    "word": "And",
+                    "confidence": 1.0,
+                    "id": "53",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 145,
+                        "height": 20,
+                        "left": 575,
+                        "top": 333
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 575,
+                            "y": 353
+                        },
+                        {
+                            "x": 575,
+                            "y": 333
+                        },
+                        {
+                            "x": 720,
+                            "y": 333
+                        },
+                        {
+                            "x": 720,
+                            "y": 353
+                        }
+                    ],
+                    "word": "Resulted",
+                    "confidence": 1.0,
+                    "id": "54",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 80,
+                        "height": 16,
+                        "left": 10,
+                        "top": 493
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 509
+                        },
+                        {
+                            "x": 10,
+                            "y": 493
+                        },
+                        {
+                            "x": 90,
+                            "y": 493
+                        },
+                        {
+                            "x": 90,
+                            "y": 509
+                        }
+                    ],
+                    "word": "Deinem",
+                    "confidence": 1.0,
+                    "id": "55",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 14,
+                        "height": 12,
+                        "left": 116,
+                        "top": 497
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 116,
+                            "y": 509
+                        },
+                        {
+                            "x": 116,
+                            "y": 497
+                        },
+                        {
+                            "x": 130,
+                            "y": 497
+                        },
+                        {
+                            "x": 130,
+                            "y": 509
+                        }
+                    ],
+                    "word": "v",
+                    "confidence": 1.0,
+                    "id": "56",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 26,
+                        "height": 14,
+                        "left": 156,
+                        "top": 495
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 156,
+                            "y": 509
+                        },
+                        {
+                            "x": 156,
+                            "y": 495
+                        },
+                        {
+                            "x": 182,
+                            "y": 495
+                        },
+                        {
+                            "x": 182,
+                            "y": 509
+                        }
+                    ],
+                    "word": "8.",
+                    "confidence": 1.0,
+                    "id": "57",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 131,
+                        "height": 16,
+                        "left": 10,
+                        "top": 531
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 547
+                        },
+                        {
+                            "x": 10,
+                            "y": 531
+                        },
+                        {
+                            "x": 141,
+                            "y": 531
+                        },
+                        {
+                            "x": 141,
+                            "y": 547
+                        }
+                    ],
+                    "word": "television",
+                    "confidence": 1.0,
+                    "id": "58",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 26,
+                        "height": 18,
+                        "left": 167,
+                        "top": 533
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 167,
+                            "y": 551
+                        },
+                        {
+                            "x": 167,
+                            "y": 533
+                        },
+                        {
+                            "x": 193,
+                            "y": 533
+                        },
+                        {
+                            "x": 193,
+                            "y": 551
+                        }
+                    ],
+                    "word": "5,",
+                    "confidence": 1.0,
+                    "id": "59",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 13,
+                        "height": 14,
+                        "left": 10,
+                        "top": 571
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 585
+                        },
+                        {
+                            "x": 10,
+                            "y": 571
+                        },
+                        {
+                            "x": 23,
+                            "y": 571
+                        },
+                        {
+                            "x": 23,
+                            "y": 585
+                        }
+                    ],
+                    "word": "1",
+                    "confidence": 1.0,
+                    "id": "60",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 13,
+                        "height": 12,
+                        "left": 49,
+                        "top": 573
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 49,
+                            "y": 585
+                        },
+                        {
+                            "x": 49,
+                            "y": 573
+                        },
+                        {
+                            "x": 62,
+                            "y": 573
+                        },
+                        {
+                            "x": 62,
+                            "y": 585
+                        }
+                    ],
+                    "word": "c",
+                    "confidence": 1.0,
+                    "id": "61",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 14,
+                        "height": 16,
+                        "left": 88,
+                        "top": 569
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 88,
+                            "y": 585
+                        },
+                        {
+                            "x": 88,
+                            "y": 569
+                        },
+                        {
+                            "x": 102,
+                            "y": 569
+                        },
+                        {
+                            "x": 102,
+                            "y": 585
+                        }
+                    ],
+                    "word": "d",
+                    "confidence": 1.0,
+                    "id": "62",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 26,
+                        "height": 14,
+                        "left": 128,
+                        "top": 571
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 128,
+                            "y": 585
+                        },
+                        {
+                            "x": 128,
+                            "y": 571
+                        },
+                        {
+                            "x": 154,
+                            "y": 571
+                        },
+                        {
+                            "x": 154,
+                            "y": 585
+                        }
+                    ],
+                    "word": "O.",
+                    "confidence": 1.0,
+                    "id": "63",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 13,
+                        "height": 14,
+                        "left": 180,
+                        "top": 571
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 180,
+                            "y": 585
+                        },
+                        {
+                            "x": 180,
+                            "y": 571
+                        },
+                        {
+                            "x": 193,
+                            "y": 571
+                        },
+                        {
+                            "x": 193,
+                            "y": 585
+                        }
+                    ],
+                    "word": "5",
+                    "confidence": 1.0,
+                    "id": "64",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 14,
+                        "height": 14,
+                        "left": 10,
+                        "top": 609
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 10,
+                            "y": 623
+                        },
+                        {
+                            "x": 10,
+                            "y": 609
+                        },
+                        {
+                            "x": 24,
+                            "y": 609
+                        },
+                        {
+                            "x": 24,
+                            "y": 623
+                        }
+                    ],
+                    "word": "7",
+                    "confidence": 1.0,
+                    "id": "65",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 28,
+                        "height": 16,
+                        "left": 50,
+                        "top": 607
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 50,
+                            "y": 623
+                        },
+                        {
+                            "x": 50,
+                            "y": 607
+                        },
+                        {
+                            "x": 78,
+                            "y": 607
+                        },
+                        {
+                            "x": 78,
+                            "y": 623
+                        }
+                    ],
+                    "word": "dd",
+                    "confidence": 1.0,
+                    "id": "66",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 117,
+                        "height": 16,
+                        "left": 104,
+                        "top": 607
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 104,
+                            "y": 623
+                        },
+                        {
+                            "x": 104,
+                            "y": 607
+                        },
+                        {
+                            "x": 221,
+                            "y": 607
+                        },
+                        {
+                            "x": 221,
+                            "y": 623
+                        }
+                    ],
+                    "word": "barri\u00e8res",
+                    "confidence": 1.0,
+                    "id": "67",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 181,
+                        "height": 20,
+                        "left": 255,
+                        "top": 494
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 514
+                        },
+                        {
+                            "x": 255,
+                            "y": 494
+                        },
+                        {
+                            "x": 436,
+                            "y": 494
+                        },
+                        {
+                            "x": 436,
+                            "y": 514
+                        }
+                    ],
+                    "word": "D'ENGAGER",
+                    "confidence": 1.0,
+                    "id": "68",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 203,
+                        "height": 20,
+                        "left": 255,
+                        "top": 521
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 541
+                        },
+                        {
+                            "x": 255,
+                            "y": 521
+                        },
+                        {
+                            "x": 458,
+                            "y": 521
+                        },
+                        {
+                            "x": 458,
+                            "y": 541
+                        }
+                    ],
+                    "word": "boluwac.co.uk",
+                    "confidence": 1.0,
+                    "id": "69",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 16,
+                        "height": 20,
+                        "left": 255,
+                        "top": 548
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 568
+                        },
+                        {
+                            "x": 255,
+                            "y": 548
+                        },
+                        {
+                            "x": 271,
+                            "y": 548
+                        },
+                        {
+                            "x": 271,
+                            "y": 568
+                        }
+                    ],
+                    "word": "1",
+                    "confidence": 1.0,
+                    "id": "70",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 67,
+                        "height": 20,
+                        "left": 279,
+                        "top": 548
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 279,
+                            "y": 568
+                        },
+                        {
+                            "x": 279,
+                            "y": 548
+                        },
+                        {
+                            "x": 346,
+                            "y": 548
+                        },
+                        {
+                            "x": 346,
+                            "y": 568
+                        }
+                    ],
+                    "word": "5671",
+                    "confidence": 1.0,
+                    "id": "71",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 74,
+                        "height": 24,
+                        "left": 354,
+                        "top": 548
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 354,
+                            "y": 572
+                        },
+                        {
+                            "x": 354,
+                            "y": 548
+                        },
+                        {
+                            "x": 428,
+                            "y": 548
+                        },
+                        {
+                            "x": 428,
+                            "y": 572
+                        }
+                    ],
+                    "word": "1,764",
+                    "confidence": 1.0,
+                    "id": "72",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 16,
+                        "height": 20,
+                        "left": 255,
+                        "top": 575
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 595
+                        },
+                        {
+                            "x": 255,
+                            "y": 575
+                        },
+                        {
+                            "x": 271,
+                            "y": 575
+                        },
+                        {
+                            "x": 271,
+                            "y": 595
+                        }
+                    ],
+                    "word": "1",
+                    "confidence": 1.0,
+                    "id": "73",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 48,
+                        "height": 20,
+                        "left": 279,
+                        "top": 575
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 279,
+                            "y": 595
+                        },
+                        {
+                            "x": 279,
+                            "y": 575
+                        },
+                        {
+                            "x": 327,
+                            "y": 575
+                        },
+                        {
+                            "x": 327,
+                            "y": 595
+                        }
+                    ],
+                    "word": "891",
+                    "confidence": 1.0,
+                    "id": "74",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 48,
+                        "height": 20,
+                        "left": 335,
+                        "top": 575
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 335,
+                            "y": 595
+                        },
+                        {
+                            "x": 335,
+                            "y": 575
+                        },
+                        {
+                            "x": 383,
+                            "y": 575
+                        },
+                        {
+                            "x": 383,
+                            "y": 595
+                        }
+                    ],
+                    "word": "101",
+                    "confidence": 1.0,
+                    "id": "75",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 18,
+                        "height": 21,
+                        "left": 391,
+                        "top": 580
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 391,
+                            "y": 601
+                        },
+                        {
+                            "x": 391,
+                            "y": 580
+                        },
+                        {
+                            "x": 409,
+                            "y": 580
+                        },
+                        {
+                            "x": 409,
+                            "y": 601
+                        }
+                    ],
+                    "word": "p",
+                    "confidence": 1.0,
+                    "id": "76",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 16,
+                        "height": 20,
+                        "left": 417,
+                        "top": 575
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 417,
+                            "y": 595
+                        },
+                        {
+                            "x": 417,
+                            "y": 575
+                        },
+                        {
+                            "x": 433,
+                            "y": 575
+                        },
+                        {
+                            "x": 433,
+                            "y": 595
+                        }
+                    ],
+                    "word": "2",
+                    "confidence": 1.0,
+                    "id": "77",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 176,
+                        "height": 26,
+                        "left": 255,
+                        "top": 602
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 255,
+                            "y": 628
+                        },
+                        {
+                            "x": 255,
+                            "y": 602
+                        },
+                        {
+                            "x": 431,
+                            "y": 602
+                        },
+                        {
+                            "x": 431,
+                            "y": 628
+                        }
+                    ],
+                    "word": "zowop.co.uk",
+                    "confidence": 1.0,
+                    "id": "78",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 60,
+                        "height": 17,
+                        "left": 500,
+                        "top": 498
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 515
+                        },
+                        {
+                            "x": 500,
+                            "y": 498
+                        },
+                        {
+                            "x": 560,
+                            "y": 498
+                        },
+                        {
+                            "x": 560,
+                            "y": 515
+                        }
+                    ],
+                    "word": "since",
+                    "confidence": 1.0,
+                    "id": "79",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 43,
+                        "height": 21,
+                        "left": 572,
+                        "top": 493
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 572,
+                            "y": 514
+                        },
+                        {
+                            "x": 572,
+                            "y": 493
+                        },
+                        {
+                            "x": 615,
+                            "y": 493
+                        },
+                        {
+                            "x": 615,
+                            "y": 514
+                        }
+                    ],
+                    "word": "the",
+                    "confidence": 1.0,
+                    "id": "80",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 69,
+                        "height": 29,
+                        "left": 627,
+                        "top": 493
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 627,
+                            "y": 522
+                        },
+                        {
+                            "x": 627,
+                            "y": 493
+                        },
+                        {
+                            "x": 696,
+                            "y": 493
+                        },
+                        {
+                            "x": 696,
+                            "y": 522
+                        }
+                    ],
+                    "word": "early",
+                    "confidence": 1.0,
+                    "id": "81",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 53,
+                        "height": 13,
+                        "left": 500,
+                        "top": 538
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 551
+                        },
+                        {
+                            "x": 500,
+                            "y": 538
+                        },
+                        {
+                            "x": 553,
+                            "y": 538
+                        },
+                        {
+                            "x": 553,
+                            "y": 551
+                        }
+                    ],
+                    "word": "rare",
+                    "confidence": 1.0,
+                    "id": "82",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 80,
+                        "height": 29,
+                        "left": 565,
+                        "top": 532
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 565,
+                            "y": 561
+                        },
+                        {
+                            "x": 565,
+                            "y": 532
+                        },
+                        {
+                            "x": 645,
+                            "y": 532
+                        },
+                        {
+                            "x": 645,
+                            "y": 561
+                        }
+                    ],
+                    "word": "khurja",
+                    "confidence": 1.0,
+                    "id": "83",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 21,
+                        "height": 17,
+                        "left": 657,
+                        "top": 537
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 657,
+                            "y": 554
+                        },
+                        {
+                            "x": 657,
+                            "y": 537
+                        },
+                        {
+                            "x": 678,
+                            "y": 537
+                        },
+                        {
+                            "x": 678,
+                            "y": 554
+                        }
+                    ],
+                    "word": "is",
+                    "confidence": 1.0,
+                    "id": "84",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 23,
+                        "height": 14,
+                        "left": 500,
+                        "top": 576
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 590
+                        },
+                        {
+                            "x": 500,
+                            "y": 576
+                        },
+                        {
+                            "x": 523,
+                            "y": 576
+                        },
+                        {
+                            "x": 523,
+                            "y": 590
+                        }
+                    ],
+                    "word": "in",
+                    "confidence": 1.0,
+                    "id": "85",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 105,
+                        "height": 22,
+                        "left": 535,
+                        "top": 578
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 535,
+                            "y": 600
+                        },
+                        {
+                            "x": 535,
+                            "y": 578
+                        },
+                        {
+                            "x": 640,
+                            "y": 578
+                        },
+                        {
+                            "x": 640,
+                            "y": 600
+                        }
+                    ],
+                    "word": "company",
+                    "confidence": 1.0,
+                    "id": "86",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 31,
+                        "height": 19,
+                        "left": 652,
+                        "top": 571
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 652,
+                            "y": 590
+                        },
+                        {
+                            "x": 652,
+                            "y": 571
+                        },
+                        {
+                            "x": 683,
+                            "y": 571
+                        },
+                        {
+                            "x": 683,
+                            "y": 590
+                        }
+                    ],
+                    "word": "nd",
+                    "confidence": 1.0,
+                    "id": "87",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 83,
+                        "height": 29,
+                        "left": 500,
+                        "top": 610
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 500,
+                            "y": 639
+                        },
+                        {
+                            "x": 500,
+                            "y": 610
+                        },
+                        {
+                            "x": 583,
+                            "y": 610
+                        },
+                        {
+                            "x": 583,
+                            "y": 639
+                        }
+                    ],
+                    "word": "Quilty",
+                    "confidence": 1.0,
+                    "id": "88",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 81,
+                        "height": 21,
+                        "left": 595,
+                        "top": 611
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 595,
+                            "y": 632
+                        },
+                        {
+                            "x": 595,
+                            "y": 611
+                        },
+                        {
+                            "x": 676,
+                            "y": 611
+                        },
+                        {
+                            "x": 676,
+                            "y": 632
+                        }
+                    ],
+                    "word": "Leaves",
+                    "confidence": 1.0,
+                    "id": "89",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                },
+                {
+                    "location": {
+                        "width": 27,
+                        "height": 18,
+                        "left": 688,
+                        "top": 611
+                    },
+                    "crop_path": "",
+                    "polygon": [
+                        {
+                            "x": 688,
+                            "y": 629
+                        },
+                        {
+                            "x": 688,
+                            "y": 611
+                        },
+                        {
+                            "x": 715,
+                            "y": 611
+                        },
+                        {
+                            "x": 715,
+                            "y": 629
+                        }
+                    ],
+                    "word": "On",
+                    "confidence": 1.0,
+                    "id": "90",
+                    "correctness": "not set",
+                    "handwritten": [
+                        false
+                    ],
+                    "unreadable": [
+                        false
+                    ]
+                }
+            ]
+        }
+    ]
+}
