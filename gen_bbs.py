@@ -1,17 +1,8 @@
 import bpy
-import os
-import sys
-from os.path import join
-import numpy as np
-import math as m
-import random
-from math import radians
-from random import uniform , triangular
 from mathutils import Vector
 from collections import defaultdict as dd
 from mathutils.kdtree import KDTree
 from bpy_extras.object_utils import world_to_camera_view
-from math import radians, pi, sqrt, inf, ceil
 
 C = bpy.context
 D = bpy.data
@@ -19,19 +10,17 @@ receipt = D.objects["receipt"]
 scene = D.scenes[0]
 camera = D.objects["Camera"]
 
-def render(size,bbs_coords):
+
+def render(size, bbs_coords):
     # set the size of our render quality
     width, height = size
     rs = scene.render
     rs.resolution_x = width
     rs.resolution_y = height
-    #C.view_layer.objects.active = D.objects["receipt"]
-    #bpy.ops.object.modifier_add(type="TRIANGULATE")
-    #bpy.ops.object.make_links_data(type="MODIFIERS")
     dg = C.evaluated_depsgraph_get()
     obj = receipt.evaluated_get(dg)
     mesh = obj.to_mesh(preserve_all_data_layers=True, depsgraph=dg)
-    mesh.update(calc_edges = True , calc_edges_loose = True)
+    mesh.update(calc_edges=True, calc_edges_loose=True)
     mesh.calc_loop_triangles()
     vert_to_coords = {}
     vert_to_faces = dd(list)
@@ -41,35 +30,37 @@ def render(size,bbs_coords):
             for i in range(3):
                 vert_index = tri.vertices[i]
                 loop_index = tri.loops[i]
-                #print("loop index is:",loop_index)
                 uv = uv_layer.data[loop_index].uv
-                uv_coord = Vector((uv.x,uv.y))
+                uv_coord = Vector((uv.x, uv.y))
                 vert_to_coords[vert_index] = uv_coord
                 verts_and_coords.append((loop_index, uv_coord))
                 vert_to_faces[vert_index].append(tri.index)
-    tree_size = len(verts_and_coords) 
-    kdtree = KDTree( tree_size )
-    for loop_index,uv_coord in verts_and_coords:
-        kdtree.insert( Vector((uv_coord.x,uv_coord.y,0)), loop_index )
+    tree_size = len(verts_and_coords)
+    kdtree = KDTree(tree_size)
+    for loop_index, uv_coord in verts_and_coords:
+        kdtree.insert(Vector((uv_coord.x, uv_coord.y, 0)), loop_index)
     kdtree.balance()
     image_bbs = []
-    #coords = [Vector((0.372,0.611)),Vector((0.388,0.611)),Vector((0.388,0.576)),Vector((0.372,0.576))]
-    for bb in bbs_coords:
+    for word_dict in bbs_coords:
+        word_new_info = {}
+        name = word_dict['word']
+        bb = word_dict['polygon']
         raw_bbs = []
         for coord in bb:
             img_pos = map_coord(scene, camera, receipt.matrix_world, coord,
-                                    mesh, vert_to_coords, vert_to_faces, verts_and_coords,kdtree)
+                                mesh, vert_to_coords, vert_to_faces, verts_and_coords, kdtree)
             img_pos = (img_pos.x, img_pos.y)
-            #print(img_pos)
+            # print(img_pos)
             raw_bbs.append(img_pos)
-        #ul, br = bounding_box_for_points(raw_bbs)
+        # ul, br = bounding_box_for_points(raw_bbs)
         bl = norm_img_to_render_space(size, raw_bbs[0])
         ul = norm_img_to_render_space(size, raw_bbs[1])
         ur = norm_img_to_render_space(size, raw_bbs[2])
         br = norm_img_to_render_space(size, raw_bbs[3])
-        image_bbs.append([ul,ur,br,bl])
+        word_new_info['word'] = name
+        word_new_info['polygon'] = [ul, ur, br, bl]
+        image_bbs.append(word_new_info)
     return image_bbs
-
 
 
 def triangle_area(verts):
@@ -108,26 +99,26 @@ def contains_vert(face, vert):
 def get_containing_face(mesh, vert_to_coords, vert_to_faces, verts_and_coords,
                         kdtree, point):
     # get our match index of the closest uv coordinate
-    coordinate, midx,dist = kdtree.find((point.x, point.y,0))
-    #print("the coordinate,midx and dist is:",coordinate, midx, dist)
+    coordinate, midx, dist = kdtree.find((point.x, point.y, 0))
+    # print("the coordinate,midx and dist is:",coordinate, midx, dist)
 
     # from our match index, get the vertex associated with our closest match
-    #vidx, coord = verts_and_coords[midx]
-    #print("the vidx and coord is:",vidx,coord)
+    # vidx, coord = verts_and_coords[midx]
+    # print("the vidx and coord is:",vidx,coord)
     vidx = mesh.loops[midx].vertex_index
-    #print("the vidx and its coordinates is:",vidx,vert_to_coords[vidx])
+    # print("the vidx and its coordinates is:",vidx,vert_to_coords[vidx])
 
     # find all the faces using that vertex
     tries = vert_to_faces[vidx]
-    #print("the tries are:",tries)
+    # print("the tries are:",tries)
 
     # test each face individually for containing coord
     for tridx in tries:
         tri = mesh.loop_triangles[tridx]
         coords = [vert_to_coords[vidx] for vidx in tri.vertices]
-        #print("the",tri,"vertices coords are",coords)
+        # print("the",tri,"vertices coords are",coords)
         if contains_vert(coords, point):
-            #print(tridx)
+            # print(tridx)
             return tridx
 
 
@@ -137,7 +128,7 @@ def map_coord(scene, camera, local_world_mat, uv_coord, mesh,
     # get the face index that contains the uv_coord
     fidx = get_containing_face(mesh, vert_to_coords, vert_to_faces,
                                verts_and_coords, kdtree, uv_coord)
-    #print("the map coord fidx is" ,fidx)
+    # print("the map coord fidx is" ,fidx)
     face = mesh.loop_triangles[fidx]
     # the uv coords of all the vertices in the face, 3 vertices only
     face_uv_coords = [vert_to_coords[vidx] for vidx in face.vertices]
@@ -157,29 +148,6 @@ def map_coord(scene, camera, local_world_mat, uv_coord, mesh,
     return img_pos
 
 
-def bounding_box_for_points(points):
-    """ for some transformed bounding box points (non right angles), get a
-    bounding box with right angles """
-
-    min_x = inf
-    min_y = inf
-    max_x = 0
-    max_y = 0
-    for point in points:
-        if point[0] < min_x:
-            min_x = point[0]
-
-        if point[1] < min_y:
-            min_y = point[1]
-
-        if point[0] > max_x:
-            max_x = point[0]
-
-        if point[1] > max_y:
-            max_y = point[1]
-
-    return ((min_x, max_y), (max_x, min_y))
-
 def norm_img_to_render_space(render_size, coord):
     coord = (
         round(coord[0] * render_size[0]),
@@ -189,4 +157,4 @@ def norm_img_to_render_space(render_size, coord):
 
 
 if __name__ == "__main__":
-    print("the bb ul and br are :", render((1920,1080)))
+    print("the bb ul and br are :", render((1920, 1080)))
