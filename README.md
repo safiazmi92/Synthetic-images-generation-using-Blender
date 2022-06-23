@@ -12,7 +12,9 @@ after that we took the bounding box of words in text as input and transform them
 The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:
 ![24_bbs](https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png)
 Finally we test the algorithm with random input and got the same result.
-![1](https://user-images.githubusercontent.com/19219983/175143272-e1548dc8-ce00-404e-9882-4374a8342b21.png)
-![1_bbs](https://user-images.githubusercontent.com/19219983/175143329-55e42b85-df8d-43f4-a2da-9efcd4d97f48.png)
+Random input image                                                                                         | Output image
+:---------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:
+![1](https://user-images.githubusercontent.com/19219983/175143272-e1548dc8-ce00-404e-9882-4374a8342b21.png) |   ![1_bbs](https://user-images.githubusercontent.com/19219983/175143329-55e42b85-df8d-43f4-a2da-9efcd4d97f48.png)
+
 
 
