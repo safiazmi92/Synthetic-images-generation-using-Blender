@@ -19,10 +19,8 @@ wrinkled_configuration = {"high": [(-20, 20), (0.5, 0.7), (0, 0), (0.5, 0.8)],
                           "low": [(-30, 30), (0.5, 0.8), (0, 0), (-0.5, 0.1)],
                           "random": [(-40, 40), (0.47, 0.8), (0, 0), (-0.5, 0.5)]}
 
-light_configuration = {"high": [20, 35], "medium": [10, 20], "low": [1, 10], "random": [1, 35]}
 
-
-def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", light_mod="random", quantity=20, draw=False):
+def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", light_mod=True, quantity=50, draw=True):
     """
     Generate bend images on the two side of image according to the given
     axi( X or Z). Z axi bend image across the length and X axi across the width.
@@ -47,18 +45,23 @@ def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", ligh
     """
     try:
         is_valid_path(img)
+    except:
+        print("Image Path doesn't exist")
+        # return
+    try:
         is_valid_path(bbs_file)
     except:
+        print("Image Path doesn't exist")
+        # return
         print("Path doesn't exist")
     # TODO check if parameter are valid res & axi & light & quantity
     img_generator = renderscript.ImageGenerator(resolution, draw)
     img_generator.set_scene(img)
     val = bend_configuration[level]
-    mod = light_configuration[light_mod]
-    img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
+    img_generator.main_rendering_loop(bbs_file, val, light_mod, quantity, deform_axis)
 
 
-def wrinkled(img, bbs_file, resolution=high_res, level="random", light_mod="high", quantity=20, draw=True):
+def wrinkled(img, bbs_file, resolution=high_res, level="high", light_mod=True, quantity=50, draw=True):
     """
     Produce crumpled images with crease, shooting angle, lighting and background varying from image to image.
     @param img: path to source image that we want to generate from
@@ -80,18 +83,22 @@ def wrinkled(img, bbs_file, resolution=high_res, level="random", light_mod="high
     """
     try:
         is_valid_path(img)
+    except:
+        print("Image Path doesn't exist")
+        #return
+    try:
         is_valid_path(bbs_file)
     except:
-        print("Path doesn't exist")
-    # TODO check if parameter are valid res & axi & light & quantity
+        print("Image Path doesn't exist")
+        #return
+        # TODO check if parameter are valid res & axi & light & quantity
     img_generator = renderscript.ImageGenerator(resolution, draw)
     img_generator.set_scene(img)
     val = wrinkled_configuration[level]
-    mod = light_configuration[light_mod]
-    img_generator.main_rendering_loop(bbs_file, val, mod, quantity)
+    img_generator.main_rendering_loop(bbs_file, val, light_mod, quantity)
 
 
-def fold(img, bbs_file, resolution=high_res, deform_axis="X", level="low", light_mod="random", quantity=20, draw=False):
+def fold(img, bbs_file, resolution=high_res, deform_axis="X", level="low", light_mod=True, quantity=50, draw=True):
     """
     Generate folded images which was folded in half as the shooting angle, lighting, folding angle and background varying
     from image to image.
@@ -116,20 +123,24 @@ def fold(img, bbs_file, resolution=high_res, deform_axis="X", level="low", light
     """
     try:
         is_valid_path(img)
+    except:
+        print("Image Path doesn't exist")
+        # return
+    try:
         is_valid_path(bbs_file)
     except:
-        print("Path doesn't exist")
+        print("Image Path doesn't exist")
+        # return
     # TODO check if parameter are valid res & axi & light & quantity
     img_generator = renderscript.ImageGenerator(resolution, draw)
     img_generator.set_scene(img)
     img_generator.set_subdivision()
     val = bend_configuration[level]
-    mod = light_configuration[light_mod]
-    img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
+    img_generator.main_rendering_loop(bbs_file, val, light_mod, quantity, deform_axis)
 
 
-def bend_wrinkled(img, bbs_file, resolution=high_res, deform_axis="X", bend_level="high", wrinkled_level="low",
-                  light_mod="random", quantity=20, draw=False):
+def bend_wrinkled(img, bbs_file, resolution=high_res, deform_axis="X", bend_level="medium", wrinkled_level="medium",
+                  light_mod=True, quantity=50, draw=True):
     """
     Generate bend images with crease.The shooting angle, lighting, bend angele,crease strength and
     background varying from image to image.
@@ -159,11 +170,16 @@ def bend_wrinkled(img, bbs_file, resolution=high_res, deform_axis="X", bend_leve
     """
     try:
         is_valid_path(img)
+    except:
+        print("Image Path doesn't exist")
+        # return
+    try:
         is_valid_path(bbs_file)
     except:
-        print("Path doesn't exist")
+        print("Image Path doesn't exist")
+        # return
     # TODO check if parameter are valid res & axi & light & quantity
-    img_generator = renderscript.ImageGenerator(resolution)
+    img_generator = renderscript.ImageGenerator(resolution, draw)
     img_generator.set_scene(img)
     bend_val = bend_configuration[bend_level]
     wrinkled_val = wrinkled_configuration[wrinkled_level]
@@ -172,8 +188,7 @@ def bend_wrinkled(img, bbs_file, resolution=high_res, deform_axis="X", bend_leve
     val.append(intersection(list(bend_val[1]), list(wrinkled_val[1])))
     val.append(bend_val[2])
     val.append(wrinkled_val[3])
-    mod = light_configuration[light_mod]
-    img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
+    img_generator.main_rendering_loop(bbs_file, val, light_mod, quantity, deform_axis)
 
 
 def intersection(range1, range2):
@@ -186,6 +201,12 @@ def is_valid_path(path):
 
 
 if __name__ == "__main__":
-    wrinkled(r"C:\Users\safi_\Desktop\project\inputs\IDCARD_CA_1.jpg", 
-    r"C:\Users\safi_\Desktop\project\inputs\IDCARD_CA_1.GT.json",
-             light_mod="low",quantity=45,draw="True")
+    arr = ['1.jpg', '4.jpeg', '5.png']
+    arr1 = ['1', '4', '5']
+    for i in range(3):
+        path = "C:\\Users\\safi_\\Desktop\\project\\inputs\\" + arr[i]
+        jpath = "C:\\Users\\safi_\\Desktop\\project\\inputs\\" + arr1[i] + ".json"
+        fold(path,jpath)
+        bend(path, jpath)
+        wrinkled(path, jpath, light_mod=True, quantity=45, draw=True)
+        bend_wrinkled(path, jpath)

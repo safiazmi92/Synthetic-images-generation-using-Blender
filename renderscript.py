@@ -50,7 +50,7 @@ class ImageGenerator:
         self.image_height = 0
 
     def set_scene(self, img_path):
-        self.select_receipt()
+        self.select_active_receipt()
         self.reset_modifiers()
         self.set_z_to_floor()
         self.set_render_resolution()
@@ -69,9 +69,16 @@ class ImageGenerator:
         bpy.context.object.modifiers["Subdivision"].render_levels = 6
         bpy.context.object.modifiers["Displace"].strength = 0
 
-    def select_receipt(self):
+    def center_receipt_in_cameraview(self):
         bpy.ops.object.select_all(action='DESELECT')
         bpy.context.scene.objects["receipt"].select_set(True)
+        bpy.ops.view3d.camera_to_view_selected()
+        bpy.context.view_layer.update()
+
+    def select_active_receipt(self):
+        bpy.ops.object.select_all(action='DESELECT')
+        bpy.context.scene.objects["receipt"].select_set(True)
+        bpy.context.view_layer.objects.active = self.receipt
 
     def load_document_image(self, img_path):
         path = img_path
@@ -79,10 +86,9 @@ class ImageGenerator:
             img = bpy.data.images.load(path, check_existing=True)  # Load the image in data
             self.image_width = img.size[0]
             self.image_height = img.size[1]
-            self.select_receipt()
+            self.select_active_receipt()
             # save the ratio for all image sizes
             self.receipt.dimensions.y = self.receipt.dimensions.x * (self.image_height/self.image_width)
-            print(self.receipt.dimensions.x, self.receipt.dimensions.y)
             bpy.context.view_layer.update()
             node_tree = self.receipt_mat.node_tree  # Get the current document compositor node tree
             img_comp_node = node_tree.nodes.get('Image Texture')  # Use this if your node already exists
@@ -175,15 +181,15 @@ class ImageGenerator:
                         # align document to floor
                         self.set_z_to_floor()
                         # Configure lighting
-                        self.set_random_light()
-                        min_energy, max_energy = light_mod
-                        if self.light_1.type != "SUN":
-                            energy1 = random.randint(min_energy, max_energy)
+                        self.set_random_light(light_mod)
+                        if self.light_1.data.type != "SUN":
+                            energy1 = random.randint(3, 18)
                             self.light_1.data.energy = energy1
-                        if self.light_2.type != "SUN":
-                            energy2 = random.randint(min_energy, max_energy)
+                        if self.light_2.data.type != "SUN":
+                            energy2 = random.randint(1, 15)
                             self.light_2.data.energy = energy2
-
+                        # center cam on receipt
+                        self.center_receipt_in_cameraview()
                         # Generate render
                         image_bbs = gen_bbs.render(self.resolution, bbs_coords)
                         image_bbs = gen_bbs.render(self.resolution, bbs_coords)
@@ -202,22 +208,24 @@ class ImageGenerator:
                                          "    Deform Axis:" + str(self.receipt.modifiers["SimpleDeform"].deform_axis) + '\n' +
                                          "     Deform Angle:" + str(self.receipt.modifiers["SimpleDeform"].angle) + " Deg" '\n' +
                                          "     Displace Strength" + str(self.receipt.modifiers["Displace"].strength) + " Deg" + '\n'
-                                         "--> Location of light_1:" + '\n' +
-                                         "    (x,y,z) = " + str(self.light_1.location) + '\n' +
-                                         "--> Rotation of light_1:" + '\n' +
-                                         "    x:" + str(self.light_1.rotation_euler[0]*180.0/m.pi) + "Deg" + '\n' +
-                                         "    y:" + str(self.light_1.rotation_euler[1] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "--> info of light_1:" + '\n' +
+                                         "    Type :" + self.light_1.data.type + '\n' +
+                                         "    Color name :" + self.get_color_name(1) + '\n' +
+                                         "    energy : " + str(self.light_1.data.energy) + '\n' +
+                                         "    Location: (x,y,z) = " + str(self.light_1.location) + '\n' +
+                                         "    Rotation:" + '\n' +
+                                         "    x:" + str(self.light_1.rotation_euler[0]*180.0/m.pi) + "Deg" + ' ' +
+                                         "    y:" + str(self.light_1.rotation_euler[1] * 180.0 / m.pi) + "Deg" + ' ' +
                                          "    z:" + str(self.light_1.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n' +
-                                         "--> Type of light_1:" + self.light_1.data.type + '\n' +
-                                         "--> Color name of light_1:" + self.get_color_name(1) + '\n'
-                                         "--> Location of light_2:" + '\n' +
-                                         "    (x,y,z) = " + str(self.light_1.location) + '\n' +
-                                         "--> Rotation of light_2:" + '\n' +
-                                         "    x:" + str(self.light_2.rotation_euler[0] * 180.0 / m.pi) + "Deg" + '\n' +
-                                         "    y:" + str(self.light_2.rotation_euler[1] * 180.0 / m.pi) + "Deg" + '\n' +
-                                         "    z:" + str(self.light_2.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n' +
-                                         "--> Type of light_2:" + self.light_2.data.type + '\n' +
-                                         "--> Color name of light_2:" + self.get_color_name(2) + '\n'
+                                         "--> info of light_2:" + '\n' +
+                                         "    Type :" + self.light_2.data.type + '\n' +
+                                         "    Color name :" + self.get_color_name(2) + '\n' +
+                                         "    energy : " + str(self.light_2.data.energy) + '\n' +
+                                         "    Location: (x,y,z) = " + str(self.light_2.location) + '\n' +
+                                         "    Rotation:" + '\n' +
+                                         "    x:" + str(self.light_2.rotation_euler[0]*180.0/m.pi) + "Deg" + ' ' +
+                                         "    y:" + str(self.light_2.rotation_euler[1] * 180.0 / m.pi) + "Deg" + ' ' +
+                                         "    z:" + str(self.light_2.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n'
                                          )
             if self.draw:
                 report.close()  # Close the .txt file corresponding to the report
@@ -325,25 +333,25 @@ class ImageGenerator:
         name = random.choice(os.listdir(bpy.path.abspath(dir)))
         return self.load_table(name, dir)
 
-    def set_random_light(self):
+    def set_random_light(self, light_mod):
         # set random lights types
         light_1 = random.choice(light_types)
         if light_1 == "SUN":
-            self.set_sun(1)
+            self.set_sun(1, light_mod)
         elif light_1 == "POINT":
-            self.set_point(1)
+            self.set_point(1, light_mod)
         else:
-            self.set_spot(1)
+            self.set_spot(1, light_mod)
         light_2 = random.choice(light_types)
         if light_2 == "SUN":
-            self.set_sun(2)
+            self.set_sun(2, light_mod)
         elif light_1 == "POINT":
-            self.set_point(2)
+            self.set_point(2, light_mod)
         else:
-            self.set_spot(2)
-        self.select_receipt()
+            self.set_spot(2, light_mod)
+        self.select_active_receipt()
 
-    def set_sun(self, light_id):
+    def set_sun(self, light_id, light_mod):
         sun = self.light_1
         if light_id == 1:
             self.light_1.data.type = "SUN"
@@ -353,10 +361,13 @@ class ImageGenerator:
 
         sun.data.use_contact_shadow = True
         # pick a random color
-        sun_color = random.choice(list(sun_colors.values()))
-        #tmp = "light_"+str(light_id)+"color"
-        #self.tmp =
+        if light_mod:
+            sun_color = random.choice(list(sun_colors.values()))
+        else:
+            sun_color = point_colors['white']
         sun.data.color = sun_color
+        # set sun energy
+        sun.data.energy = random.uniform(0.5, 3)
         # rotation x 0-20 y -10 -30 z 0-360
         x_rotation = random.uniform(0, 20)
         y_rotation = random.uniform(-10, -30)
@@ -372,7 +383,7 @@ class ImageGenerator:
         sun.location[1] = y_location
         sun.location[2] = z_location
 
-    def set_point(self,light_id):
+    def set_point(self, light_id, light_mod):
         point = self.light_1
         if light_id == 1:
             self.light_1.data.type = "POINT"
@@ -381,8 +392,10 @@ class ImageGenerator:
             point = self.light_2
 
         point.data.use_contact_shadow = True
-        # pick a random color
-        point_color = random.choice(list(point_colors.values()))
+        if light_mod:
+            point_color = random.choice(list(point_colors.values()))
+        else:
+            point_color = point_colors['white']
         point.data.color = point_color
         # for point there is no rotation x(-0.5,0.5) y(+-0.7) z(0.2,0.8)
         x_location = random.uniform(-0.5, 0.5)
@@ -392,7 +405,7 @@ class ImageGenerator:
         point.location[1] = y_location
         point.location[2] = z_location
 
-    def set_spot(self, light_id):
+    def set_spot(self, light_id, light_mod):
         spot = self.light_1
         if light_id == 1:
             self.light_1.data.type = "SPOT"
@@ -401,7 +414,10 @@ class ImageGenerator:
             spot = self.light_2
         spot.data.use_contact_shadow = True
         # pick a random color
-        spot_color = random.choice(list(point_colors.values()))
+        if light_mod:
+            spot_color = random.choice(list(point_colors.values()))
+        else:
+            spot_color = point_colors['white']
         spot.data.color = spot_color
         spot.location[0] = 0
         spot.location[1] = 0
@@ -418,7 +434,7 @@ class ImageGenerator:
         spot.rotation_euler[1] = y_rotation * m.pi / 180.0
         spot.rotation_euler[2] = z_rotation * m.pi / 180.0
 
-    def get_color_name(self,light_id):
+    def get_color_name(self, light_id):
         light = self.light_1
         if light_id == 2:
             light = self.light_2
