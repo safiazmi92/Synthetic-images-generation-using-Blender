@@ -13,10 +13,10 @@ camera = D.objects["Camera"]
 
 def render(size, bbs_coords):
     # set the size of our render quality
-    width, height = size
-    rs = scene.render
-    rs.resolution_x = width
-    rs.resolution_y = height
+    #width, height = size
+    #rs = scene.render
+    #rs.resolution_x = width
+    #rs.resolution_y = height
     dg = C.evaluated_depsgraph_get()
     obj = receipt.evaluated_get(dg)
     mesh = obj.to_mesh(preserve_all_data_layers=True, depsgraph=dg)

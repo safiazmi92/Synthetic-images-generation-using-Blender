@@ -14,6 +14,12 @@ from random import uniform, triangular
 from PIL import Image, ImageDraw
 
 gen_bbs = bpy.data.texts["gen_bbs.py"].as_module()
+light_types = ["POINT","SUN","SPOT"]
+sun_colors = {"white": (1.0, 1.0, 1.0), "yellow_red": (1.0, 0.571187, 0.140428), "yellow_white": (1.0, 0.943264, 0.373584),
+              "violet": (1.0, 0.350564, 0.350564), "blue_white": (0.373584, 0.598958, 1), "yellow_lamp": (1, 0.489856, 0.015479)}
+
+point_colors = {"green": (1.0, 0.350564, 0.350564), "yellow_green": (0.394567, 1.0, 0.150458), "yellow": (1.0, 0.819516, 0.057805),
+                "purple": (0.854957, 0.358621, 1.0), "white_blue": (0.285345, 0.508991, 1.0), "white": (1.0, 1.0, 1.0)}
 
 
 # Main Class
@@ -44,11 +50,12 @@ class ImageGenerator:
         self.image_height = 0
 
     def set_scene(self, img_path):
-        self.load_document_image(img_path)
-        self.set_render_resolution()
+        self.select_receipt()
         self.reset_modifiers()
-        self.set_camera()
         self.set_z_to_floor()
+        self.set_render_resolution()
+        self.load_document_image(img_path)
+        self.set_camera()
         bpy.context.view_layer.update()
 
     def set_subdivision(self):
@@ -62,12 +69,21 @@ class ImageGenerator:
         bpy.context.object.modifiers["Subdivision"].render_levels = 6
         bpy.context.object.modifiers["Displace"].strength = 0
 
+    def select_receipt(self):
+        bpy.ops.object.select_all(action='DESELECT')
+        bpy.context.scene.objects["receipt"].select_set(True)
+
     def load_document_image(self, img_path):
         path = img_path
         if Path(path).is_file():
             img = bpy.data.images.load(path, check_existing=True)  # Load the image in data
             self.image_width = img.size[0]
             self.image_height = img.size[1]
+            self.select_receipt()
+            # save the ratio for all image sizes
+            self.receipt.dimensions.y = self.receipt.dimensions.x * (self.image_height/self.image_width)
+            print(self.receipt.dimensions.x, self.receipt.dimensions.y)
+            bpy.context.view_layer.update()
             node_tree = self.receipt_mat.node_tree  # Get the current document compositor node tree
             img_comp_node = node_tree.nodes.get('Image Texture')  # Use this if your node already exists
             if img_comp_node:
@@ -159,13 +175,17 @@ class ImageGenerator:
                         # align document to floor
                         self.set_z_to_floor()
                         # Configure lighting
+                        self.set_random_light()
                         min_energy, max_energy = light_mod
-                        energy1 = random.randint(min_energy, max_energy)
-                        self.light_1.data.energy = energy1
-                        energy2 = random.randint(min_energy, max_energy)
-                        self.light_2.data.energy = energy2
+                        if self.light_1.type != "SUN":
+                            energy1 = random.randint(min_energy, max_energy)
+                            self.light_1.data.energy = energy1
+                        if self.light_2.type != "SUN":
+                            energy2 = random.randint(min_energy, max_energy)
+                            self.light_2.data.energy = energy2
 
                         # Generate render
+                        image_bbs = gen_bbs.render(self.resolution, bbs_coords)
                         image_bbs = gen_bbs.render(self.resolution, bbs_coords)
                         # Take photo of current scene and ouput the render_counter.png file
                         self.render_blender(render_counter, image_bbs)
@@ -182,6 +202,22 @@ class ImageGenerator:
                                          "    Deform Axis:" + str(self.receipt.modifiers["SimpleDeform"].deform_axis) + '\n' +
                                          "     Deform Angle:" + str(self.receipt.modifiers["SimpleDeform"].angle) + " Deg" '\n' +
                                          "     Displace Strength" + str(self.receipt.modifiers["Displace"].strength) + " Deg" + '\n'
+                                         "--> Location of light_1:" + '\n' +
+                                         "    (x,y,z) = " + str(self.light_1.location) + '\n' +
+                                         "--> Rotation of light_1:" + '\n' +
+                                         "    x:" + str(self.light_1.rotation_euler[0]*180.0/m.pi) + "Deg" + '\n' +
+                                         "    y:" + str(self.light_1.rotation_euler[1] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "    z:" + str(self.light_1.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "--> Type of light_1:" + self.light_1.data.type + '\n' +
+                                         "--> Color name of light_1:" + self.get_color_name(1) + '\n'
+                                         "--> Location of light_2:" + '\n' +
+                                         "    (x,y,z) = " + str(self.light_1.location) + '\n' +
+                                         "--> Rotation of light_2:" + '\n' +
+                                         "    x:" + str(self.light_2.rotation_euler[0] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "    y:" + str(self.light_2.rotation_euler[1] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "    z:" + str(self.light_2.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n' +
+                                         "--> Type of light_2:" + self.light_2.data.type + '\n' +
+                                         "--> Color name of light_2:" + self.get_color_name(2) + '\n'
                                          )
             if self.draw:
                 report.close()  # Close the .txt file corresponding to the report
@@ -289,6 +325,107 @@ class ImageGenerator:
         name = random.choice(os.listdir(bpy.path.abspath(dir)))
         return self.load_table(name, dir)
 
+    def set_random_light(self):
+        # set random lights types
+        light_1 = random.choice(light_types)
+        if light_1 == "SUN":
+            self.set_sun(1)
+        elif light_1 == "POINT":
+            self.set_point(1)
+        else:
+            self.set_spot(1)
+        light_2 = random.choice(light_types)
+        if light_2 == "SUN":
+            self.set_sun(2)
+        elif light_1 == "POINT":
+            self.set_point(2)
+        else:
+            self.set_spot(2)
+        self.select_receipt()
 
+    def set_sun(self, light_id):
+        sun = self.light_1
+        if light_id == 1:
+            self.light_1.data.type = "SUN"
+        else:
+            self.light_2.data.type = "SUN"
+            sun = self.light_2
 
+        sun.data.use_contact_shadow = True
+        # pick a random color
+        sun_color = random.choice(list(sun_colors.values()))
+        #tmp = "light_"+str(light_id)+"color"
+        #self.tmp =
+        sun.data.color = sun_color
+        # rotation x 0-20 y -10 -30 z 0-360
+        x_rotation = random.uniform(0, 20)
+        y_rotation = random.uniform(-10, -30)
+        z_rotation = random.randint(0, 360)
+        sun.rotation_euler[0] = x_rotation * m.pi / 180.0
+        sun.rotation_euler[1] = y_rotation * m.pi / 180.0
+        sun.rotation_euler[2] = z_rotation * m.pi / 180.0
+        # location x -+ 0.6 y+- 0.8 z 0.6-1
+        x_location = random.uniform(-0.6, 0.6)
+        y_location = random.uniform(-0.8, 0.8)
+        z_location = random.uniform(0.6, 1)
+        sun.location[0] = x_location
+        sun.location[1] = y_location
+        sun.location[2] = z_location
 
+    def set_point(self,light_id):
+        point = self.light_1
+        if light_id == 1:
+            self.light_1.data.type = "POINT"
+        else:
+            self.light_2.data.type = "POINT"
+            point = self.light_2
+
+        point.data.use_contact_shadow = True
+        # pick a random color
+        point_color = random.choice(list(point_colors.values()))
+        point.data.color = point_color
+        # for point there is no rotation x(-0.5,0.5) y(+-0.7) z(0.2,0.8)
+        x_location = random.uniform(-0.5, 0.5)
+        y_location = random.uniform(-0.7, 0.7)
+        z_location = random.uniform(0.2, 1)
+        point.location[0] = x_location
+        point.location[1] = y_location
+        point.location[2] = z_location
+
+    def set_spot(self, light_id):
+        spot = self.light_1
+        if light_id == 1:
+            self.light_1.data.type = "SPOT"
+        else:
+            self.light_2.data.type = "SPOT"
+            spot = self.light_2
+        spot.data.use_contact_shadow = True
+        # pick a random color
+        spot_color = random.choice(list(point_colors.values()))
+        spot.data.color = spot_color
+        spot.location[0] = 0
+        spot.location[1] = 0
+        spot.location[2] = 0.5
+        # scale the spot
+        spot.scale[0] = 0.055
+        spot.scale[1] = 0.055
+        spot.scale[2] = 0.055
+        # rotation x +-7 y -+8 z 0-360
+        x_rotation = random.uniform(-7, 7)
+        y_rotation = random.uniform(-8, -8)
+        z_rotation = random.randint(0, 360)
+        spot.rotation_euler[0] = x_rotation * m.pi / 180.0
+        spot.rotation_euler[1] = y_rotation * m.pi / 180.0
+        spot.rotation_euler[2] = z_rotation * m.pi / 180.0
+
+    def get_color_name(self,light_id):
+        light = self.light_1
+        if light_id == 2:
+            light = self.light_2
+        x, y, z = light.data.color
+        color = (float("{:.6f}".format(float(x))),float("{:.6f}".format(float(y))), float("{:.6f}".format(float(z))))
+        light_type = light.data.type
+        if light_type == "SUN":
+            return list(sun_colors.keys())[list(sun_colors.values()).index(color)]
+        else:
+            return list(point_colors.keys())[list(point_colors.values()).index(color)]

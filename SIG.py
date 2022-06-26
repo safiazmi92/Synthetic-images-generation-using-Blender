@@ -58,7 +58,7 @@ def bend(img, bbs_file, resolution=high_res, deform_axis="X", level="high", ligh
     img_generator.main_rendering_loop(bbs_file, val, mod, quantity, deform_axis)
 
 
-def wrinkled(img, bbs_file, resolution=high_res, level="low", light_mod="random", quantity=20, draw=False):
+def wrinkled(img, bbs_file, resolution=high_res, level="random", light_mod="high", quantity=20, draw=True):
     """
     Produce crumpled images with crease, shooting angle, lighting and background varying from image to image.
     @param img: path to source image that we want to generate from
@@ -186,5 +186,6 @@ def is_valid_path(path):
 
 
 if __name__ == "__main__":
-    wrinkled(r"C:\Users\safi_\Desktop\project\inputs\input_1.png", r"C:\Users\safi_\Desktop\project\inputs\input_1.json",
+    wrinkled(r"C:\Users\safi_\Desktop\project\inputs\IDCARD_CA_1.jpg", 
+    r"C:\Users\safi_\Desktop\project\inputs\IDCARD_CA_1.GT.json",
              light_mod="low",quantity=45,draw="True")
