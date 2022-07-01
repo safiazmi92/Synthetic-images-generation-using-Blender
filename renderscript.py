@@ -172,6 +172,16 @@ class ImageGenerator:
         self.receipt_handle.location.z = diff + 0.001
         bpy.context.view_layer.update()
 
+    def set_obj_z_to_floor(self, obj,obj_):
+        """ takes an object and gives a z position that puts its bounding box at 0
+        """
+        bpy.context.view_layer.update()
+        bb = obj.bound_box
+        lower_pos = (obj.matrix_world @ Vector(bb[0])).z
+        diff = obj.matrix_world.translation.z - lower_pos
+        obj.location.z = diff + 0.001
+        bpy.context.view_layer.update()
+       
     def main_rendering_loop(self, bbs_file, level, light_mod=True, quantity=50, deform_axis='X', obj_mod='None'):
         """
         This function represent the main algorithm, it accepts the
