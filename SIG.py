@@ -211,16 +211,16 @@ def bend_wrinkled(img, bbs_file, resolution=high_res, deform_axis="X", bend_leve
     val.append(wrinkled_val[3])
     img_generator.main_rendering_loop(bbs_file, val, light_mod, quantity, deform_axis)
 
-def gen_with_obj(img, bbs_file, resolution=high_res, draw=False):
+def gen_with_obj(img, bbs_file, resolution=high_res, draw=False, obj = 'plant'):
     img_generator = renderscript.ImageGenerator(resolution, draw)
     img_generator.set_scene(img)
-    img_generator.unable_coffee_render()
-    img_generator.set_coffee_in_scene()
+    img_generator.unable_object_render(obj)
+    img_generator.set_object_in_scene(obj)
     #img_generator.main_rendering_loop(bbs_file, bend_configuration["flat"])
     level = random.choice(list(bend_configuration.values()))
-    img_generator.main_rendering_loop(bbs_file, level, True, obj_mod=True)
+    img_generator.main_rendering_loop(bbs_file, level, True, obj_mod=obj)
     level = random.choice(list(wrinkled_configuration.values()))
-    img_generator.main_rendering_loop(bbs_file, level, obj_mod=True)
+    img_generator.main_rendering_loop(bbs_file, level, False, obj_mod=True)
 
 def intersection(range1, range2):
     return (max(range1[0], range2[0]), min(range1[1], range2[1]))
@@ -232,8 +232,8 @@ def is_valid_path(path):
 
 
 if __name__ == "__main__":
-    arr = ['3.jpg', '4.jpeg', '5.png', '7.png','11.jpg']
-    arr1 = ['3', '4', '5', '7','11']
+    arr = ['3.jpg', '4.jpeg', '5.png','11.jpg']
+    arr1 = ['3', '4', '5','11']
     for i in range(6):
         path = "C:\\Users\\safi_\\Desktop\\project\\inputs\\" + arr[i]
         jpath = "C:\\Users\\safi_\\Desktop\\project\\inputs\\" + arr1[i] + ".json"

@@ -36,6 +36,10 @@ class ImageGenerator:
         self.coffee_light = bpy.data.objects['coffee_light']
         self.coffee_handler = bpy.data.objects['coffee_handler']
         self.coffee_path = bpy.data.objects['coffee_path']
+        self.plant = bpy.data.objects['plant']
+        self.plant_light = bpy.data.objects['plant_light']
+        self.plant_handler = bpy.data.objects['plant_handler']
+        self.plant_path = bpy.data.objects['plant_path']
         self.receipt_handle = bpy.data.objects['receipt handle']
         self.sphere = bpy.data.objects['sphere']
         self.cube = bpy.data.objects['cube']
@@ -54,7 +58,7 @@ class ImageGenerator:
         self.image_height = 0
 
     def set_scene(self, img_path):
-        self.disable_coffee_render()
+        self.disable_object_render()
         self.select_active_receipt()
         self.reset_modifiers()
         self.set_z_to_floor()
@@ -80,25 +84,49 @@ class ImageGenerator:
         bpy.ops.view3d.camera_to_view_selected()
         bpy.context.view_layer.update()
 
-    def disable_coffee_render(self):
+    def disable_object_render(self):
         self.coffee_cup.hide_render = True
         self.coffee_light.hide_render = True
+        self.plant.hide_render = True
+        self.plant_light.hide_render = True
 
-    def unable_coffee_render(self):
-        self.coffee_cup.hide_render = False
-        self.coffee_light.hide_render = False
+    def unable_object_render(self, obj):
+        if obj == 'coffee cup':
+            self.coffee_cup.hide_render = False
+            self.coffee_light.hide_render = False
+        else:
+            self.plant.hide_render = False
+            self.plant_light.hide_render = False
 
-    def set_coffee_in_scene(self):
+    def set_object_in_scene(self, obj):
         receipt_edge_x = self.receipt.dimensions[0]
         receipt_edge_y = self.receipt.dimensions[1]
-        cup_diameter = self.coffee_cup.dimensions[1]
-        receipt_radius = max(receipt_edge_x,receipt_edge_y)/2
-        # put coffee cup on receipt right corner
-        self.coffee_path.scale[0] = receipt_radius + cup_diameter
-        self.coffee_path.scale[1] = receipt_radius + cup_diameter
-        self.coffee_path.scale[2] = receipt_radius + cup_diameter
-        self.coffee_path.rotation_euler[2] = m.radians(0)
-        self.coffee_handler.rotation_euler[2] = m.radians(45)
+        receipt_radius = max(receipt_edge_x, receipt_edge_y) / 2
+        obj_diameter = 0
+        if obj == 'coffee cup':
+            obj_diameter = self.coffee_cup.dimensions[1]
+            self.coffee_path.scale[0] = receipt_radius + obj_diameter
+            self.coffee_path.scale[1] = receipt_radius + obj_diameter
+            self.coffee_path.scale[2] = receipt_radius + obj_diameter
+            self.coffee_path.rotation_euler[2] = m.radians(0)
+            self.coffee_handler.rotation_euler[2] = m.radians(45)
+        else:
+            obj_diameter = self.plant.dimensions[0]
+            self.plant_path.scale[0] = receipt_radius + obj_diameter
+            self.plant_path.scale[1] = receipt_radius + obj_diameter
+            self.plant_path.scale[2] = receipt_radius + obj_diameter
+            self.plant_path.rotation_euler[2] = m.radians(0)
+            self.plant_handler.rotation_euler[2] = m.radians(0)
+
+    def object_lights(self, obj):
+        if obj == 'coffee cup':
+            self.coffee_path.rotation_euler[2] = m.radians(random.randint(0, 361))
+            self.coffee_handler.rotation_euler[1] = m.radians(random.randint(-45, 1))
+            self.coffee_handler.rotation_euler[2] = m.radians(random.randint(20, 81))
+        else:
+            self.plant_path.rotation_euler[2] = m.radians(random.randint(0, 361))
+            self.plant_handler.rotation_euler[0] = m.radians(random.randint(-70, -55))
+            self.plant_handler.rotation_euler[2] = m.radians(random.randint(-110, -70))
 
     def select_active_receipt(self):
         bpy.ops.object.select_all(action='DESELECT')
@@ -144,7 +172,7 @@ class ImageGenerator:
         self.receipt_handle.location.z = diff + 0.001
         bpy.context.view_layer.update()
 
-    def main_rendering_loop(self, bbs_file, level, light_mod=True, quantity=50, deform_axis='X', obj_mod=False):
+    def main_rendering_loop(self, bbs_file, level, light_mod=True, quantity=50, deform_axis='X', obj_mod='None'):
         """
         This function represent the main algorithm, it accepts the
         rotation step as input, and outputs the images and the bbs.
@@ -214,10 +242,8 @@ class ImageGenerator:
                             energy2 = random.randint(1, 15)
                             self.light_2.data.energy = energy2
                         # check if object mood
-                        if obj_mod:
-                            self.coffee_path.rotation_euler[2] = m.radians(random.randint(0, 361))
-                            self.coffee_handler.rotation_euler[1] = m.radians(random.randint(-45, 1))
-                            self.coffee_handler.rotation_euler[2] = m.radians(random.randint(20, 81))
+                        if obj_mod != 'None':
+                            self.object_lights(obj_mod)
                         # center cam on receipt
                         self.center_receipt_in_cameraview()
                         # Generate render
