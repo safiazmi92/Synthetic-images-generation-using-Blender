@@ -16,5 +16,6 @@ Random input image                                                              
 :---------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:
 ![1](https://user-images.githubusercontent.com/19219983/175143272-e1548dc8-ce00-404e-9882-4374a8342b21.png) |   ![1_bbs](https://user-images.githubusercontent.com/19219983/175143329-55e42b85-df8d-43f4-a2da-9efcd4d97f48.png)
 
-
-
+We added an option to generate images with an object on the scene so we could have shadows on the document: 
+![4](https://user-images.githubusercontent.com/19219983/176953653-cc905ed1-6902-4c40-980e-662314e87d9d.png)
+![8](https://user-images.githubusercontent.com/19219983/176953692-5ef36aa3-d9e2-4555-b70b-f4be02137411.png)
