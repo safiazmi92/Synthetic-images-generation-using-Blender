@@ -32,6 +32,10 @@ class ImageGenerator:
         self.light_1 = bpy.data.objects['Light_1']
         self.light_2 = bpy.data.objects['Light_2']
         self.receipt = bpy.data.objects['receipt']
+        self.coffee_cup = bpy.data.objects['coffee_cup']
+        self.coffee_light = bpy.data.objects['coffee_light']
+        self.coffee_handler = bpy.data.objects['coffee_handler']
+        self.coffee_path = bpy.data.objects['coffee_path']
         self.receipt_handle = bpy.data.objects['receipt handle']
         self.sphere = bpy.data.objects['sphere']
         self.cube = bpy.data.objects['cube']
@@ -50,6 +54,7 @@ class ImageGenerator:
         self.image_height = 0
 
     def set_scene(self, img_path):
+        self.disable_coffee_render()
         self.select_active_receipt()
         self.reset_modifiers()
         self.set_z_to_floor()
@@ -74,6 +79,26 @@ class ImageGenerator:
         bpy.context.scene.objects["receipt"].select_set(True)
         bpy.ops.view3d.camera_to_view_selected()
         bpy.context.view_layer.update()
+
+    def disable_coffee_render(self):
+        self.coffee_cup.hide_render = True
+        self.coffee_light.hide_render = True
+
+    def unable_coffee_render(self):
+        self.coffee_cup.hide_render = False
+        self.coffee_light.hide_render = False
+
+    def set_coffee_in_scene(self):
+        receipt_edge_x = self.receipt.dimensions[0]
+        receipt_edge_y = self.receipt.dimensions[1]
+        cup_diameter = self.coffee_cup.dimensions[1]
+        receipt_radius = max(receipt_edge_x,receipt_edge_y)/2
+        # put coffee cup on receipt right corner
+        self.coffee_path.scale[0] = receipt_radius + cup_diameter
+        self.coffee_path.scale[1] = receipt_radius + cup_diameter
+        self.coffee_path.scale[2] = receipt_radius + cup_diameter
+        self.coffee_path.rotation_euler[2] = m.radians(0)
+        self.coffee_handler.rotation_euler[2] = m.radians(45)
 
     def select_active_receipt(self):
         bpy.ops.object.select_all(action='DESELECT')
@@ -119,7 +144,7 @@ class ImageGenerator:
         self.receipt_handle.location.z = diff + 0.001
         bpy.context.view_layer.update()
 
-    def main_rendering_loop(self, bbs_file, level, light_mod, quantity, deform_axis='X'):
+    def main_rendering_loop(self, bbs_file, level, light_mod=True, quantity=50, deform_axis='X', obj_mod=False):
         """
         This function represent the main algorithm, it accepts the
         rotation step as input, and outputs the images and the bbs.
@@ -188,10 +213,14 @@ class ImageGenerator:
                         if self.light_2.data.type != "SUN":
                             energy2 = random.randint(1, 15)
                             self.light_2.data.energy = energy2
+                        # check if object mood
+                        if obj_mod:
+                            self.coffee_path.rotation_euler[2] = m.radians(random.randint(0, 361))
+                            self.coffee_handler.rotation_euler[1] = m.radians(random.randint(-45, 1))
+                            self.coffee_handler.rotation_euler[2] = m.radians(random.randint(20, 81))
                         # center cam on receipt
                         self.center_receipt_in_cameraview()
                         # Generate render
-                        image_bbs = gen_bbs.render(self.resolution, bbs_coords)
                         image_bbs = gen_bbs.render(self.resolution, bbs_coords)
                         # Take photo of current scene and ouput the render_counter.png file
                         self.render_blender(render_counter, image_bbs)
@@ -359,7 +388,7 @@ class ImageGenerator:
             self.light_2.data.type = "SUN"
             sun = self.light_2
 
-        sun.data.use_contact_shadow = True
+        sun.data.use_contact_shadow = False
         # pick a random color
         if light_mod:
             sun_color = random.choice(list(sun_colors.values()))
@@ -391,7 +420,7 @@ class ImageGenerator:
             self.light_2.data.type = "POINT"
             point = self.light_2
 
-        point.data.use_contact_shadow = True
+        point.data.use_contact_shadow = False
         if light_mod:
             point_color = random.choice(list(point_colors.values()))
         else:
@@ -412,7 +441,7 @@ class ImageGenerator:
         else:
             self.light_2.data.type = "SPOT"
             spot = self.light_2
-        spot.data.use_contact_shadow = True
+        spot.data.use_contact_shadow = False
         # pick a random color
         if light_mod:
             spot_color = random.choice(list(point_colors.values()))
