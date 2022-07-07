@@ -28,7 +28,7 @@ We added an option to generate images with an object on the scene so we could ha
 ![4](https://user-images.githubusercontent.com/19219983/176953653-cc905ed1-6902-4c40-980e-662314e87d9d.png)
 ![8](https://user-images.githubusercontent.com/19219983/176953692-5ef36aa3-d9e2-4555-b70b-f4be02137411.png)
 
-# Running
+## Installation
 There are two options:<br />
 ### **1- Running from Blender**:
 
