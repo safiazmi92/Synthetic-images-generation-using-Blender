@@ -19,3 +19,41 @@ Random input image                                                              
 We added an option to generate images with an object on the scene so we could have shadows on the document: 
 ![4](https://user-images.githubusercontent.com/19219983/176953653-cc905ed1-6902-4c40-980e-662314e87d9d.png)
 ![8](https://user-images.githubusercontent.com/19219983/176953692-5ef36aa3-d9e2-4555-b70b-f4be02137411.png)
+
+# Running
+There are two options:<br />
+### **1- Running from Blender**:
+
+1.1- download Blender from https://www.blender.org/download/ version 3.1 or later
+
+1.2- clone the repository
+
+1.3- open project_v1.2.blend
+
+1.4- go to scripting choose install_libs.py then run the script:<br />
+<br />
+  1.4.1)<br />
+![setup1](https://user-images.githubusercontent.com/19219983/177786423-431a9e2c-5f96-48ef-a891-49c98e3ca734.png)
+
+  1.4.2)<br />
+![setup2](https://user-images.githubusercontent.com/19219983/177786874-18a18f72-0bc6-40fd-a2b6-7bc7b57fa47b.png)
+
+1.5- choose SIG.py run the script<br />
+<br />
+<br />
+### **2- Runnig on Server**:
+
+2.1- Download Blender builder from https://builder.blender.org/download/daily/ version 3.2.1 or later
+
+2.2- unzip the builder file
+
+2.3- clone the repository
+
+2.4- open cmd/terminal cd to the Blender builder unziped folder
+
+2.5- if it is first time use then we need to install the requirements,to do that from the cmd/terminal (we opend in 2.4) run the following command:<br />
+    blender path_to_repository/project_v1.2.blend --background --python path_to_repository/install_libs.py
+    
+2.6- from the cmd/terminal (we opend in 2.4) type this command to run the program :<br />
+    blender path_to_repository/project_v1.2.blend --background --python path_to_repository/SIG.py -- path_to_yaml_file
+
