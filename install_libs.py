@@ -1,11 +1,14 @@
 import subprocess
-import bpy
+import sys
+from pathlib import Path
 
-py_exec = bpy.app.binary_path_python
-# ensure pip is installed & update
-subprocess.call([str(py_exec), "-m", "ensurepip", "--user"])
-subprocess.call([str(py_exec), "-m", "pip", "install", "--upgrade", "pip"])
-# install dependencies using pip
-# dependencies such as 'numpy' could be added to the end of this command's list
-subprocess.call([str(py_exec),"-m", "pip", "install", "--user", "Pillow"])
-subprocess.call([str(py_exec),"-m", "pip", "install", "--user", "PyYAML"])
+py_exec = str(sys.executable)
+# Get lib directory
+lib = Path(py_exec).parent.parent / "lib"
+# Ensure pip is installed
+subprocess.call([py_exec, "-m", "ensurepip", "--user" ])
+# Update pip (not mandatory)
+subprocess.call([py_exec, "-m", "pip", "install", "--upgrade", "pip" ])
+# Install packages
+subprocess.call([py_exec,"-m", "pip", "install", f"--target={str(lib)}", "Pillow"])
+subprocess.call([py_exec,"-m", "pip", "install", f"--target={str(lib)}", "PyYAML"])
