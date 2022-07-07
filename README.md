@@ -5,11 +5,12 @@ we will generate 2D images from varying camera, light, and background conditions
 we will use Blender.
 As start we took as input the bounding box of letters then transform them to the 3D scene,Then the algorithem transform the bounding box to 2D and draw the bounding box:<br />
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="400" height="300">
   </a>
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="400" height="300">
   </a>
+<br />
 after that we took the bounding box of words in text as input and transform them to the 3D scene The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:<br />
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
   <img src="https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png" alt="24" width="500" height="360">
