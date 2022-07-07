@@ -4,13 +4,8 @@ from os.path import join, basename
 import random
 import yaml
 import bpy
-
 renderscript = bpy.data.texts["renderscript.py"].as_module()
 
-THIS_DIR = bpy.path.abspath("//")
-if THIS_DIR not in sys.path:
-    sys.path.insert(0, THIS_DIR)
-    
 high_res = (1920, 1080)
 medium_res = (1280, 720)
 low_res = (720, 480)
@@ -134,8 +129,9 @@ def create_output_folder(image_path, out_put_path, fun_name):
 
 
 if __name__ == "__main__":
-    input_path = join(THIS_DIR,'our_config.yaml')
-    with open(input_path) as f:
+    argv = sys.argv
+    argv = argv[argv.index("--") + 1:]
+    with open(argv[0]) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
         input_files = data['input']
         path = input_files['image_path']

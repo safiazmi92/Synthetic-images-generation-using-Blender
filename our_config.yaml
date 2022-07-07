@@ -33,7 +33,7 @@ light_colors: True
 
 object_shadow : True
 
-draw_labels : False
+draw_labels : True
 
 render_engine : BLENDER_EEVEE
 

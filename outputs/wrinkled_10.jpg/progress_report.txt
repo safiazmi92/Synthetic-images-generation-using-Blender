@@ -1,0 +1,230 @@
+On render:1
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:0 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.7649981379508972 Deg
+--> info of light_1:
+    Type :POINT
+    Color name :white
+    energy : 15.0
+    Location: (x,y,z) = <Vector (0.0373, 0.3541, 0.8409)>
+    Rotation:
+    x:5.669371626699227Deg     y:-7.999999938029066Deg     z:39.00000108527387Deg
+--> info of light_2:
+    Type :POINT
+    Color name :green
+    energy : 2.0
+    Location: (x,y,z) = <Vector (-0.3067, -0.5404, 0.7669)>
+    Rotation:
+    x:6.381111916047229Deg     y:-7.999999938029066Deg     z:190.99999734650518Deg
+On render:2
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:20 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.6596270799636841 Deg
+--> info of light_1:
+    Type :SUN
+    Color name :white
+    energy : 1.4087945222854614
+    Location: (x,y,z) = <Vector (0.4027, -0.3038, 0.6144)>
+    Rotation:
+    x:10.909542703691315Deg     y:-17.543404062427573Deg     z:86.99999900590097Deg
+--> info of light_2:
+    Type :SPOT
+    Color name :green
+    energy : 12.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:0.6309250108407349Deg     y:-7.999999938029066Deg     z:205.0000000128204Deg
+On render:3
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:40 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.694553554058075 Deg
+--> info of light_1:
+    Type :POINT
+    Color name :white
+    energy : 10.0
+    Location: (x,y,z) = <Vector (-0.4776, 0.1916, 0.3950)>
+    Rotation:
+    x:10.909542703691315Deg     y:-17.543404062427573Deg     z:86.99999900590097Deg
+--> info of light_2:
+    Type :POINT
+    Color name :yellow
+    energy : 6.0
+    Location: (x,y,z) = <Vector (-0.2333, 0.3472, 0.6137)>
+    Rotation:
+    x:0.6309250108407349Deg     y:-7.999999938029066Deg     z:205.0000000128204Deg
+On render:4
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:60 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.6255951523780823 Deg
+--> info of light_1:
+    Type :SPOT
+    Color name :white
+    energy : 13.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:-2.9990319041677562Deg     y:-7.999999938029066Deg     z:204.00000567681718Deg
+--> info of light_2:
+    Type :SUN
+    Color name :yellow_white
+    energy : 2.1020030975341797
+    Location: (x,y,z) = <Vector (0.3975, -0.2505, 0.6271)>
+    Rotation:
+    x:2.3300148749650074Deg     y:-14.712516047699898Deg     z:212.99999568198123Deg
+On render:5
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:80 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.7493987679481506 Deg
+--> info of light_1:
+    Type :POINT
+    Color name :yellow_green
+    energy : 15.0
+    Location: (x,y,z) = <Vector (0.3539, -0.1228, 0.2061)>
+    Rotation:
+    x:-2.9990319041677562Deg     y:-7.999999938029066Deg     z:204.00000567681718Deg
+--> info of light_2:
+    Type :POINT
+    Color name :white
+    energy : 1.0
+    Location: (x,y,z) = <Vector (0.4881, -0.6551, 0.4028)>
+    Rotation:
+    x:2.3300148749650074Deg     y:-14.712516047699898Deg     z:212.99999568198123Deg
+On render:6
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:100 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.6210566163063049 Deg
+--> info of light_1:
+    Type :SPOT
+    Color name :purple
+    energy : 7.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:-4.477404151902213Deg     y:-7.999999938029066Deg     z:39.00000108527387Deg
+--> info of light_2:
+    Type :SUN
+    Color name :yellow_white
+    energy : 2.592700719833374
+    Location: (x,y,z) = <Vector (-0.0017, 0.4635, 0.7242)>
+    Rotation:
+    x:17.678981609905033Deg     y:-11.194068747720182Deg     z:351.0000063523703Deg
+On render:7
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:120 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.7409242391586304 Deg
+--> info of light_1:
+    Type :SPOT
+    Color name :white
+    energy : 9.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:4.341106873240963Deg     y:-7.999999938029066Deg     z:230.00000867706282Deg
+--> info of light_2:
+    Type :SPOT
+    Color name :white_blue
+    energy : 6.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:1.4686115872453918Deg     y:-7.999999938029066Deg     z:0.0Deg
+On render:8
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:140 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.7136428952217102 Deg
+--> info of light_1:
+    Type :POINT
+    Color name :yellow
+    energy : 8.0
+    Location: (x,y,z) = <Vector (0.3517, 0.5691, 0.2617)>
+    Rotation:
+    x:4.341106873240963Deg     y:-7.999999938029066Deg     z:230.00000867706282Deg
+--> info of light_2:
+    Type :POINT
+    Color name :purple
+    energy : 7.0
+    Location: (x,y,z) = <Vector (-0.2343, 0.6298, 0.8668)>
+    Rotation:
+    x:1.4686115872453918Deg     y:-7.999999938029066Deg     z:0.0Deg
+On render:9
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:160 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.6476045250892639 Deg
+--> info of light_1:
+    Type :SPOT
+    Color name :purple
+    energy : 4.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:-1.516175423799774Deg     y:-7.999999938029066Deg     z:77.00000100435535Deg
+--> info of light_2:
+    Type :SPOT
+    Color name :yellow_green
+    energy : 11.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:-5.711372594339751Deg     y:-7.999999938029066Deg     z:66.00000183661733Deg
+On render:10
+--> Location of the camera:
+     d:0.5m
+     Beta:20 Deg
+     Gamma:180 Deg
+--> Modifiers Vals:
+    Deform Axis:X
+     Deform Angle:0.0 Deg
+     Displace Strength0.6162388324737549 Deg
+--> info of light_1:
+    Type :SUN
+    Color name :blue_white
+    energy : 0.9950577616691589
+    Location: (x,y,z) = <Vector (-0.1355, 0.4859, 0.8191)>
+    Rotation:
+    x:0.8211019699653668Deg     y:-23.48794309333228Deg     z:289.0000023503334Deg
+--> info of light_2:
+    Type :SPOT
+    Color name :purple
+    energy : 4.0
+    Location: (x,y,z) = <Vector (0.0000, 0.0000, 0.5000)>
+    Rotation:
+    x:-1.1816349994083708Deg     y:-7.999999938029066Deg     z:156.0000043410955Deg
