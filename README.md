@@ -38,7 +38,7 @@ There are two options:<br />
 
 1.3- open project_v1.2.blend
 
-1.4- go to scripting choose install_libs.py then run the script:<br />
+1.4- if it is first time use then we need to install the requirements,to do that in scripting choose install_libs.py then run the script:<br />
 <br />
   1.4.1)<br />
 ![setup1](https://user-images.githubusercontent.com/19219983/177786423-431a9e2c-5f96-48ef-a891-49c98e3ca734.png)
