@@ -14,17 +14,22 @@ from random import uniform, triangular
 from PIL import Image, ImageDraw
 
 gen_bbs = bpy.data.texts["gen_bbs.py"].as_module()
-light_types = ["POINT","SUN","SPOT"]
+light_types = ["POINT", "SUN", "SPOT"]
 sun_colors = {"white": (1.0, 1.0, 1.0), "yellow_red": (1.0, 0.571187, 0.140428), "yellow_white": (1.0, 0.943264, 0.373584),
               "violet": (1.0, 0.350564, 0.350564), "blue_white": (0.373584, 0.598958, 1), "yellow_lamp": (1, 0.489856, 0.015479)}
 
 point_colors = {"green": (1.0, 0.350564, 0.350564), "yellow_green": (0.394567, 1.0, 0.150458), "yellow": (1.0, 0.819516, 0.057805),
                 "purple": (0.854957, 0.358621, 1.0), "white_blue": (0.285345, 0.508991, 1.0), "white": (1.0, 1.0, 1.0)}
 
+shadow_objects = ["coffee cup", "plant"]
+
+THIS_DIR = bpy.path.abspath("//")
+if THIS_DIR not in sys.path:
+    sys.path.insert(0, THIS_DIR)
 
 # Main Class
 class ImageGenerator:
-    def __init__(self, resolution, draw):
+    def __init__(self, resolution, draw, light_mood, shadow):
         # Scene information
         self.scene = bpy.data.scenes['Scene']
         self.camera = bpy.data.objects['Camera']
@@ -48,34 +53,57 @@ class ImageGenerator:
         self.world_mat = bpy.data.worlds["World"]
         self.resolution = resolution
         self.draw = draw
-
+        self.light_mood = light_mood
+        self.shadow_mode = shadow
+        if shadow:
+            self.shadow_object = random.choice(shadow_objects)
         # Input your own preferred location for the images and labels
-        self.project_path = 'C:\\Users\\safi_\\Desktop\\project\\inputs'
-        self.images_filepath = 'C:\\Users\\safi_\\Desktop\\project\\outputs'
-        self.BackGround_DIR = 'C:\\Users\\safi_\\Desktop\\project\\backgrounds'
-        self.Environment_DIR = 'C:\\Users\\safi_\\Desktop\\project\\enviroment'
+        self.images_filepath = ''
+        self.BackGround_DIR = join(THIS_DIR, "backgrounds")
+        self.Environment_DIR = join(THIS_DIR, "environment")
         self.image_width = 0
         self.image_height = 0
 
-    def set_scene(self, img_path):
-        self.disable_object_render()
+    def set_bbs(self, bbs_file):
+        # get bbs coords
+        bbs_input_path = bbs_file
+        bbs_input = open(bbs_input_path, 'r')
+        self.bbs_coords = self.get_bbs_input(bbs_input)
+        bbs_input.close()
+
+    def set_output_dir_path(self, output_path):
+        self.images_filepath = output_path
+
+    def set_scene(self):
+        self.hide_shadow_objects()
+        if self.shadow_mode:
+            self.show_shadow_objects()
+            self.set_shadow_object()
         self.select_active_receipt()
         self.reset_modifiers()
         self.set_z_to_floor()
         self.set_render_resolution()
-        self.load_document_image(img_path)
         self.set_camera()
         bpy.context.view_layer.update()
 
+    def set_render_engine(self, engine_name, samples):
+        if engine_name == 'CYCLES':
+            bpy.context.scene.render.engine = 'CYCLES'
+            bpy.context.scene.cycles.samples = samples
+        else:
+            bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+
     def set_subdivision(self):
         bpy.context.object.modifiers["Subdivision"].levels = 0
-        bpy.context.object.modifiers["Subdivision"].render_levels = 00
+        bpy.context.object.modifiers["Subdivision"].render_levels = 0
+        bpy.context.object.modifiers["Subdivision.001"].render_levels = 1
 
     def reset_modifiers(self):
         bpy.context.object.modifiers["SimpleDeform"].angle = 0
         bpy.context.object.modifiers["SimpleDeform"].deform_axis = 'X'
         bpy.context.object.modifiers["Subdivision"].levels = 6
         bpy.context.object.modifiers["Subdivision"].render_levels = 6
+        bpy.context.object.modifiers["Subdivision.001"].render_levels = 2
         bpy.context.object.modifiers["Displace"].strength = 0
 
     def center_receipt_in_cameraview(self):
@@ -84,26 +112,26 @@ class ImageGenerator:
         bpy.ops.view3d.camera_to_view_selected()
         bpy.context.view_layer.update()
 
-    def disable_object_render(self):
+    def hide_shadow_objects(self):
         self.coffee_cup.hide_render = True
         self.coffee_light.hide_render = True
         self.plant.hide_render = True
         self.plant_light.hide_render = True
 
-    def unable_object_render(self, obj):
-        if obj == 'coffee cup':
+    def show_shadow_objects(self):
+        if self.shadow_object == 'coffee cup':
             self.coffee_cup.hide_render = False
             self.coffee_light.hide_render = False
         else:
             self.plant.hide_render = False
             self.plant_light.hide_render = False
 
-    def set_object_in_scene(self, obj):
+    def set_shadow_object(self):
         receipt_edge_x = self.receipt.dimensions[0]
         receipt_edge_y = self.receipt.dimensions[1]
         receipt_radius = max(receipt_edge_x, receipt_edge_y) / 2
         obj_diameter = 0
-        if obj == 'coffee cup':
+        if self.shadow_object == 'coffee cup':
             obj_diameter = self.coffee_cup.dimensions[1]
             self.coffee_path.scale[0] = receipt_radius + obj_diameter
             self.coffee_path.scale[1] = receipt_radius + obj_diameter
@@ -118,8 +146,8 @@ class ImageGenerator:
             self.plant_path.rotation_euler[2] = m.radians(0)
             self.plant_handler.rotation_euler[2] = m.radians(0)
 
-    def object_lights(self, obj):
-        if obj == 'coffee cup':
+    def object_lights(self):
+        if self.shadow_object == 'coffee cup':
             self.coffee_path.rotation_euler[2] = m.radians(random.randint(0, 361))
             self.coffee_handler.rotation_euler[1] = m.radians(random.randint(-45, 1))
             self.coffee_handler.rotation_euler[2] = m.radians(random.randint(20, 81))
@@ -181,26 +209,22 @@ class ImageGenerator:
         diff = obj.matrix_world.translation.z - lower_pos
         obj.location.z = diff + 0.001
         bpy.context.view_layer.update()
-       
-    def main_rendering_loop(self, bbs_file, level, light_mod=True, quantity=50, deform_axis='X', obj_mod='None'):
+
+    def main_rendering_loop(self, level, quantity=50, deform_axis='X'):
         """
         This function represent the main algorithm, it accepts the
         rotation step as input, and outputs the images and the bbs.
         """
-        # Calculate the number of images and labels to generate
-        n_renders = self.calculate_n_renders(quantity, level)
-        print('Number of renders to create:', n_renders)
-
-        accept_render = input('\nContinue?[Y/N]:  ')
-        if accept_render == 'Y':  # If the user inputs 'Y' then procede with the data generation
-            # Create .txt file that record the progress of the data generation
+        # Define a counter to name each .png and .txt files that are outputted
+        render_counter = 0
+        while(render_counter < quantity):
+            # Define the step with which the pictures are going to be taken
+            rotation_step = 20
+            # Calculate the number of images and labels to generate
+            print('Number of renders to create:', quantity)
             if self.draw:
                 report_file_path = self.images_filepath + '/progress_report.txt'
                 report = open(report_file_path, 'w')
-            bbs_input_path = bbs_file
-            bbs_input = open(bbs_input_path, 'r')
-            bbs_coords = self.get_bbs_input(bbs_input)
-            bbs_input.close()
             # Multiply the limits by 10 to adapt to the for loop
             # Define range of heights z in m that the camera is going to pan through
             min_d, max_d = level[1]
@@ -210,13 +234,12 @@ class ImageGenerator:
             gamma_limits = [0, 360]
             dmin = int(min_d * 10)
             dmax = int(max_d * 10)
-            # Define a counter to name each .png and .txt files that are outputted
-            render_counter = 0
-            # Define the step with which the pictures are going to be taken
-            rotation_step = quantity
-            for d in range(dmin, dmax + 1, 5):  # Loop to vary the height of the camera
+            # Loop to vary the height of the camera
+            for d in range(dmin, dmax + 1, 5):
                 # Update the height of the camera
                 # Divide the distance z by 10 to re-factor current height
+                if render_counter >= quantity:
+                    break
                 self.camera.location = (0, 0, d / 10)
 
                 # Refactor the beta limits for them to be in a range from 0 to 360 to adapt the limits to the for loop
@@ -224,6 +247,8 @@ class ImageGenerator:
                 max_beta = (-1) * minbeta + 90
                 # Loop to vary the angle beta
                 for beta in range(min_beta, max_beta + 1, rotation_step):
+                    if render_counter >= quantity:
+                        break
                     beta_r = (-1) * beta + 90
 
                     # load a random table texture
@@ -234,8 +259,9 @@ class ImageGenerator:
 
                     # Loop to vary the angle gamma 0-360
                     for gamma in range(gamma_limits[0], gamma_limits[1] + 1, rotation_step):
+                        if render_counter >= quantity:
+                            break
                         render_counter += 1
-
                         # Update the rotation of the axis
                         axis_rotation = (0, m.radians(beta_r), m.radians(gamma))
                         self.axis.rotation_euler = axis_rotation  # Assign rotation to <bpy.data.objects['Empty']> object
@@ -244,7 +270,7 @@ class ImageGenerator:
                         # align document to floor
                         self.set_z_to_floor()
                         # Configure lighting
-                        self.set_random_light(light_mod)
+                        self.set_random_light()
                         if self.light_1.data.type != "SUN":
                             energy1 = random.randint(3, 18)
                             self.light_1.data.energy = energy1
@@ -252,18 +278,17 @@ class ImageGenerator:
                             energy2 = random.randint(1, 15)
                             self.light_2.data.energy = energy2
                         # check if object mood
-                        if obj_mod != 'None':
-                            self.object_lights(obj_mod)
+                        if self.shadow_mode:
+                            self.object_lights()
                         # center cam on receipt
                         self.center_receipt_in_cameraview()
                         # Generate render
-                        image_bbs = gen_bbs.render(self.resolution, bbs_coords)
+                        image_bbs = gen_bbs.render(self.resolution, self.bbs_coords)
                         # Take photo of current scene and ouput the render_counter.png file
                         self.render_blender(render_counter, image_bbs)
-
                         # Show progress on batch of renders
                         if self.draw:
-                            print('Progress =', str(render_counter) + '/' + str(n_renders))
+                            print('Progress =', str(render_counter) + '/' + str(quantity))
                             report.write("On render:" + str(render_counter) + '\n' +
                                          "--> Location of the camera:" + '\n' +
                                          "     d:" + str(d / 10) + "m" + '\n' +
@@ -272,14 +297,14 @@ class ImageGenerator:
                                          "--> Modifiers Vals:" + '\n' +
                                          "    Deform Axis:" + str(self.receipt.modifiers["SimpleDeform"].deform_axis) + '\n' +
                                          "     Deform Angle:" + str(self.receipt.modifiers["SimpleDeform"].angle) + " Deg" '\n' +
-                                         "     Displace Strength" + str(self.receipt.modifiers["Displace"].strength) + " Deg" + '\n'
+                                         "     Displace Strength" + str(self.receipt.modifiers["Displace"].strength) + " Deg" + '\n' +
                                          "--> info of light_1:" + '\n' +
                                          "    Type :" + self.light_1.data.type + '\n' +
                                          "    Color name :" + self.get_color_name(1) + '\n' +
                                          "    energy : " + str(self.light_1.data.energy) + '\n' +
                                          "    Location: (x,y,z) = " + str(self.light_1.location) + '\n' +
                                          "    Rotation:" + '\n' +
-                                         "    x:" + str(self.light_1.rotation_euler[0]*180.0/m.pi) + "Deg" + ' ' +
+                                         "    x:" + str(self.light_1.rotation_euler[0] * 180.0 / m.pi) + "Deg" + ' ' +
                                          "    y:" + str(self.light_1.rotation_euler[1] * 180.0 / m.pi) + "Deg" + ' ' +
                                          "    z:" + str(self.light_1.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n' +
                                          "--> info of light_2:" + '\n' +
@@ -288,16 +313,13 @@ class ImageGenerator:
                                          "    energy : " + str(self.light_2.data.energy) + '\n' +
                                          "    Location: (x,y,z) = " + str(self.light_2.location) + '\n' +
                                          "    Rotation:" + '\n' +
-                                         "    x:" + str(self.light_2.rotation_euler[0]*180.0/m.pi) + "Deg" + ' ' +
+                                         "    x:" + str(self.light_2.rotation_euler[0] * 180.0 / m.pi) + "Deg" + ' ' +
                                          "    y:" + str(self.light_2.rotation_euler[1] * 180.0 / m.pi) + "Deg" + ' ' +
                                          "    z:" + str(self.light_2.rotation_euler[2] * 180.0 / m.pi) + "Deg" + '\n'
                                          )
             if self.draw:
                 report.close()  # Close the .txt file corresponding to the report
 
-        else:  # If the user inputs anything else, then abort the data generation
-            print('Aborted rendering operation')
-            pass
 
     def calculate_n_renders(self, rotation_step, level):
         min_d, max_d = level[1]
@@ -317,6 +339,20 @@ class ImageGenerator:
                     render_counter += 1
 
         return render_counter
+
+    def calculate_rot_step(self, quantity, level):
+        min_d, max_d = level[1]
+        min_br, max_br = level[0]
+        zmin = int(min_d * 10)
+        zmax = int(max_d * 10)
+        min_beta = (-1) * max_br + 90
+        max_beta = (-1) * min_br + 90
+        diff_d = zmax - zmin + 1
+        diff_beta = max_beta - min_beta +1
+        diff_gamma = 361
+        res = m.ceil(diff_d/5)*m.ceil(diff_gamma/quantity)*diff_beta
+        step_rot = m.ceil(m.sqrt(res))
+        return step_rot
 
     def render_blender(self, count_f_name, img_bbs):
         # Render images
@@ -398,25 +434,25 @@ class ImageGenerator:
         name = random.choice(os.listdir(bpy.path.abspath(dir)))
         return self.load_table(name, dir)
 
-    def set_random_light(self, light_mod):
+    def set_random_light(self):
         # set random lights types
         light_1 = random.choice(light_types)
         if light_1 == "SUN":
-            self.set_sun(1, light_mod)
+            self.set_sun(1)
         elif light_1 == "POINT":
-            self.set_point(1, light_mod)
+            self.set_point(1)
         else:
-            self.set_spot(1, light_mod)
+            self.set_spot(1)
         light_2 = random.choice(light_types)
         if light_2 == "SUN":
-            self.set_sun(2, light_mod)
+            self.set_sun(2)
         elif light_1 == "POINT":
-            self.set_point(2, light_mod)
+            self.set_point(2)
         else:
-            self.set_spot(2, light_mod)
+            self.set_spot(2)
         self.select_active_receipt()
 
-    def set_sun(self, light_id, light_mod):
+    def set_sun(self, light_id):
         sun = self.light_1
         if light_id == 1:
             self.light_1.data.type = "SUN"
@@ -426,7 +462,7 @@ class ImageGenerator:
 
         sun.data.use_contact_shadow = False
         # pick a random color
-        if light_mod:
+        if self.light_mood:
             sun_color = random.choice(list(sun_colors.values()))
         else:
             sun_color = point_colors['white']
@@ -448,7 +484,7 @@ class ImageGenerator:
         sun.location[1] = y_location
         sun.location[2] = z_location
 
-    def set_point(self, light_id, light_mod):
+    def set_point(self, light_id):
         point = self.light_1
         if light_id == 1:
             self.light_1.data.type = "POINT"
@@ -457,7 +493,7 @@ class ImageGenerator:
             point = self.light_2
 
         point.data.use_contact_shadow = False
-        if light_mod:
+        if self.light_mood:
             point_color = random.choice(list(point_colors.values()))
         else:
             point_color = point_colors['white']
@@ -470,7 +506,7 @@ class ImageGenerator:
         point.location[1] = y_location
         point.location[2] = z_location
 
-    def set_spot(self, light_id, light_mod):
+    def set_spot(self, light_id):
         spot = self.light_1
         if light_id == 1:
             self.light_1.data.type = "SPOT"
@@ -479,7 +515,7 @@ class ImageGenerator:
             spot = self.light_2
         spot.data.use_contact_shadow = False
         # pick a random color
-        if light_mod:
+        if self.light_mood:
             spot_color = random.choice(list(point_colors.values()))
         else:
             spot_color = point_colors['white']

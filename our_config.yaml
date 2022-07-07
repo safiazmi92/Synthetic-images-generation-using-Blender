@@ -1,0 +1,41 @@
+input:
+  image_path: 'C:\Users\safi_\Desktop\project\inputs\10.jpg'
+  groundtruth_path: 'C:\Users\safi_\Desktop\project\inputs\10.json'
+  
+output:
+  out_dir: 'C:\Users\safi_\Desktop\project\outputs'
+  num_samples: 40
+ 
+shape:
+  flat:
+    probability: 0.25 
+  bended: 
+    level: medium
+    probability: 0.25
+    side: Z
+  wrinkled: 
+    level: high
+    probability: 0.25
+  folded: 
+    level: high
+    probability: 0.25
+    side: X
+  mixed: 
+    bend_level: medium
+    bend_side: Z
+    wrinkle_level: medium
+    probability: 0
+
+render_resolution_1: 1920
+render_resolution_2: 1080
+
+light_colors: True
+
+object_shadow : True
+
+draw_labels : False
+
+render_engine : BLENDER_EEVEE
+
+render_samples : 0 
+
