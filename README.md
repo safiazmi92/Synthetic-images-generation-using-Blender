@@ -5,18 +5,20 @@ we will generate 2D images from varying camera, light, and background conditions
 we will use Blender.
 As start we took as input the bounding box of letters then transform them to the 3D scene,Then the algorithem transform the bounding box to 2D and draw the bounding box:<br />
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="400" height="300">
   </a>
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="400" height="300">
   </a>
+<br />
 after that we took the bounding box of words in text as input and transform them to the 3D scene The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:<br />
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png" alt="24" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png" alt="24" width="400" height="300">
   </a>
 <a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png" alt="24_bbs" width="500" height="360">
+  <img src="https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png" alt="24_bbs" width="400" height="300">
   </a>
+<br />
 Finally we test the algorithm with random input and got the same result.
 Random input image                                                                                         | Output image
 :---------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:
@@ -36,7 +38,7 @@ There are two options:<br />
 
 1.3- open project_v1.2.blend
 
-1.4- go to scripting choose install_libs.py then run the script:<br />
+1.4- if it is first time use then we need to install the requirements,to do that in scripting choose install_libs.py then run the script:<br />
 <br />
   1.4.1)<br />
 ![setup1](https://user-images.githubusercontent.com/19219983/177786423-431a9e2c-5f96-48ef-a891-49c98e3ca734.png)
