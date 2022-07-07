@@ -3,14 +3,20 @@ create a synthetic image generator which will be used to train Deep Learning mod
 First, we will create a 3D scene by projecting original 2D document images into 3D meshes. Then
 we will generate 2D images from varying camera, light, and background conditions. For this task
 we will use Blender.
-As start we took as input the bounding box of letters then transform them to the 3D scene:
-![3](https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png)
-Then  the algorithem transform the bounding box to 2D and draw the bounding box:
-![3_bbs](https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png)
-after that we took the bounding box of words in text as input and transform them to the 3D scene: 
-![24](https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png)
-The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:
-![24_bbs](https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png)
+As start we took as input the bounding box of letters then transform them to the 3D scene,Then the algorithem transform the bounding box to 2D and draw the bounding box:<br />
+<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
+  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="500" height="360">
+  </a>
+<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
+  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="500" height="360">
+  </a>
+after that we took the bounding box of words in text as input and transform them to the 3D scene The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:<br />
+<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
+  <img src="https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png" alt="24" width="500" height="360">
+  </a>
+<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
+  <img src="https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png" alt="24_bbs" width="500" height="360">
+  </a>
 Finally we test the algorithm with random input and got the same result.
 Random input image                                                                                         | Output image
 :---------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:
