@@ -102,7 +102,7 @@ There are two options to install:
   cd blender-builder-unziped-folder
 ```
 
-* In first time use then we need to install the required libarys, to do that from the 
+* In first time use we need to install the required libarys before running, to do that from the 
   cmd/terminal (we opend) run the following command:
 ```bash
 blender path_to_repository/project_v1.2.blend --background --python path_to_repository/install_libs.py
