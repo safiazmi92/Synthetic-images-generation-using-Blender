@@ -1,67 +1,125 @@
-# Synthetic-images-generation-using-Blender
-create a synthetic image generator which will be used to train Deep Learning models, in the domain of documents understanding.
-First, we will create a 3D scene by projecting original 2D document images into 3D meshes. Then
-we will generate 2D images from varying camera, light, and background conditions. For this task
-we will use Blender.
-As start we took as input the bounding box of letters then transform them to the 3D scene,Then the algorithem transform the bounding box to 2D and draw the bounding box:<br />
-<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209264-c8f81b21-f720-4eaf-811c-5bf125535ccc.png" alt="3" width="400" height="300">
-  </a>
-<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175209291-1e69b56e-bf41-4a14-887a-7a64420c5881.png" alt="3_bbs" width="400" height="300">
-  </a>
-<br />
-after that we took the bounding box of words in text as input and transform them to the 3D scene The algorithm draw the bounding box precisely around every word which indicate that the output coordinate is correct:<br />
-<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175213277-22bba62b-556d-4bfa-b996-d8f27dbc181e.png" alt="24" width="400" height="300">
-  </a>
-<a href ="https://github.com/safiazmi92/Synthetic-images-generation-using-Blender">
-  <img src="https://user-images.githubusercontent.com/19219983/175213290-5a461b35-9721-45ec-a901-f2a53494e042.png" alt="24_bbs" width="400" height="300">
-  </a>
-<br />
-Finally we test the algorithm with random input and got the same result.
-Random input image                                                                                         | Output image
-:---------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:
-![1](https://user-images.githubusercontent.com/19219983/175143272-e1548dc8-ce00-404e-9882-4374a8342b21.png) |   ![1_bbs](https://user-images.githubusercontent.com/19219983/175143329-55e42b85-df8d-43f4-a2da-9efcd4d97f48.png)
 
-We added an option to generate images with an object on the scene so we could have shadows on the document: 
+# Synthetic images generation 
+
+create a synthetic image generator which will be used to train Deep Learning models, in 
+the domain of documents understanding. First, we created a 3D scene by projecting 
+original 2D document images into 3D meshes. Then we generated 2D images from varying 
+camera, light, and background conditions. For this task we used Blender.
+
+
+## Table of Contents
+* [General Information](#general-information)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Demo](#demo)
+* [Installation](#installation)
+* [Project Status](#project-Status)
+* [Authors](#authors)
+## General Information
+- Creat synthetic image generator to make a synthetic labeled text data-set.
+- This generator will help in training deep learning models in the domain of documents
+  understanding by providing a tool that make thousands of different labeled synthetic
+  images from a given labeled image. every image will be taken from different camera 
+  angle and have different background, environment,lights colors,lights kind,shape
+  and different objects reflecting there shadow.
+- We did this project as a part of Industrial project course in our university for IBM 
+
+## Technologies
+
+* Blender 3.2
+
+* Python 3.10 
+
+* Pillow 9.2.0
+
+* PyYAML 6.0
+
+
+## Features
+
+- Colored Light mode toggle
+- Three different light kinds 
+- Shadow mode with two object reflecting there shadow
+- Draw mode drawing bounding box on output image
+- Five different shapes for the output document 
+
+
+## Screenshots
+
 ![4](https://user-images.githubusercontent.com/19219983/176953653-cc905ed1-6902-4c40-980e-662314e87d9d.png)
+
 ![8](https://user-images.githubusercontent.com/19219983/176953692-5ef36aa3-d9e2-4555-b70b-f4be02137411.png)
 
+![5_bbs](https://raw.githubusercontent.com/safiazmi92/Synthetic-images-generation-using-Blender/master/outputs/folded_10.jpg/5_bbs.png)
+
+![10_bbs](https://raw.githubusercontent.com/safiazmi92/Synthetic-images-generation-using-Blender/master/outputs/bended_10.jpg/10_bbs.png)
+
+## Demo
+
+- first demo: https://www.youtube.com/watch?v=MNB3RKKlvoA
+- second demo: https://www.youtube.com/watch?v=gJC1-iTfwbs
+
+
+
 ## Installation
-There are two options:<br />
-### **1- Running from Blender**:
 
-1.1- download Blender from https://www.blender.org/download/ version 3.1 or later
+There are two options to install:
 
-1.2- clone the repository
+#### **Running from Blender :** 
 
-1.3- open project_v1.2.blend
+* first download Blender version 3.1 or later from:
+ 
+  https://www.blender.org/download/ 
 
-1.4- if it is first time use then we need to install the requirements,to do that in scripting choose install_libs.py then run the script:<br />
-<br />
-  1.4.1)<br />
-![setup1](https://user-images.githubusercontent.com/19219983/177786423-431a9e2c-5f96-48ef-a891-49c98e3ca734.png)
+* clone the repository
 
-  1.4.2)<br />
-![setup2](https://user-images.githubusercontent.com/19219983/177786874-18a18f72-0bc6-40fd-a2b6-7bc7b57fa47b.png)
+* open project_v1.2.blend
 
-1.5- choose SIG.py run the script<br />
-<br />
-<br />
-### **2- Runnig on Server**:
+* if it is first time use then we need to install the requirements,to do 
+  that in scripting choose install_libs.py then run the script:
 
-2.1- Download Blender builder from https://builder.blender.org/download/daily/ version 3.2.1 or later
+  ![setup1](https://user-images.githubusercontent.com/19219983/177786423-431a9e2c-5f96-48ef-a891-49c98e3ca734.png)
 
-2.2- unzip the builder file
+  ![setup2](https://user-images.githubusercontent.com/19219983/177786874-18a18f72-0bc6-40fd-a2b6-7bc7b57fa47b.png)
 
-2.3- clone the repository
+* finally choose SIG.py and run the scrip
 
-2.4- open cmd/terminal cd to the Blender builder unziped folder
 
-2.5- if it is first time use then we need to install the requirements,to do that from the cmd/terminal (we opend in 2.4) run the following command:<br />
-    blender path_to_repository/project_v1.2.blend --background --python path_to_repository/install_libs.py
-    
-2.6- from the cmd/terminal (we opend in 2.4) type this command to run the program :<br />
-    blender path_to_repository/project_v1.2.blend --background --python path_to_repository/SIG.py -- path_to_yaml_file
+#### **Install on Server :**
 
+* First download Blender builder version 3.2.1 or later from :
+   
+   https://builder.blender.org/download/daily/ 
+
+* Unzip the builder file
+
+* Clone this repository
+
+* open cmd/terminal 
+
+```bash
+  cd blender-builder-unziped-folder
+```
+
+* In first time use then we need to install the required libarys, to do that from the 
+  cmd/terminal (we opend) run the following command:
+```bash
+blender path_to_repository/project_v1.2.blend --background --python path_to_repository/install_libs.py
+```
+
+* Finally from cmd/terminal (we opend) type this command to run the program :
+```bash
+blender path_to_repository/project_v1.2.blend --background --python path_to_repository/SIG.py -- path_to_yaml_file
+```
+## Project Status
+The project is complete. My plan is to add another features that will be
+mainly about rendering the document from objects like phone/pc and other. 
+## Authors
+
+Created by:
+- [@safiazmi92](https://github.com/safiazmi92)
+- [@rahaf698](https://github.com/rahaf698)
+feel free to contact us:
+- safiazmi92@gmail.com
+- rahafhamed97@gmail.com 
