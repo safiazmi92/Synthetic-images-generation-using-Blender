@@ -15,8 +15,9 @@ camera, light, and background conditions. For this task we used Blender.
 * [Demo](#demo)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Project Status](#project-Status)
+* [Project Status](#project-status)
 * [Authors](#authors)
+* [License](#license)
 ## General Information
 - Creat synthetic image generator to make a synthetic labeled text data-set.
 - This generator will help in training deep learning models in the domain of documents
@@ -211,6 +212,7 @@ render_samples : 0
 ## Project Status
 The project is complete. My plan is to add another features that will be
 mainly about rendering the document from objects like phone/pc and other. 
+
 ## Authors
 
 Created by:
@@ -220,3 +222,6 @@ Created by:
 feel free to contact us:
 - safiazmi92@gmail.com
 - rahafhamed97@gmail.com 
+
+## License
+- MIT license
