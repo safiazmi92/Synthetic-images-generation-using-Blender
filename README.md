@@ -206,6 +206,7 @@ render_samples : 0
     with open('path_to_yaml_file') as f:     
 ``` 
 
+- Open open project_v1.2.blend go to scripting choose SIG.py and then run the script.
 - The output generated images and there corresponding bounding box file will be found at the output path specified in the yaml file in both ways.
 ## Project Status
 The project is complete. My plan is to add another features that will be
@@ -215,6 +216,7 @@ mainly about rendering the document from objects like phone/pc and other.
 Created by:
 - [@safiazmi92](https://github.com/safiazmi92)
 - [@rahaf698](https://github.com/rahaf698)
+
 feel free to contact us:
 - safiazmi92@gmail.com
 - rahafhamed97@gmail.com 
