@@ -1,26 +1,31 @@
 input:
-  image_path: 'C:\Users\safi_\Desktop\project\inputs\10.jpg'
-  groundtruth_path: 'C:\Users\safi_\Desktop\project\inputs\10.json'
+  image_folder_path: 'C:\Users\pc\Desktop\Synthetic-images-generation-using-Blender\image_inputs'
+  groundtruth_folder_path: 'C:\Users\pc\Desktop\Synthetic-images-generation-using-Blender\json_inputs'
   
 output:
-  out_dir: 'C:\Users\safi_\Desktop\project\outputs'
-  num_samples: 40
+  out_dir: 'C:\Users\pc\Desktop\Synthetic-images-generation-using-Blender\outputs'
+  num_samples_per_image: 10
  
 shape:
   flat:
-    probability: 0.25 
-  bended: 
-    level: medium
-    probability: 0.25
+    probability: 1
+  bended_up: 
+    level: high
+    probability: 0
+    side: Z
+  bended_down:
+    level: high
+    probability: 0
     side: Z
   wrinkled: 
     level: high
-    probability: 0.25
+    probability: 0
   folded: 
     level: high
-    probability: 0.25
+    probability: 0
     side: X
-  mixed: 
+  mixed:
+    bend_mode: up
     bend_level: medium
     bend_side: Z
     wrinkle_level: medium
@@ -29,13 +34,17 @@ shape:
 render_resolution_1: 1920
 render_resolution_2: 1080
 
-light_colors: True
+light_colors: False
 
 object_shadow : True
 
-draw_labels : True
+draw_labels : False
 
 render_engine : BLENDER_EEVEE
 
 render_samples : 0 
+
+camera_random_mode : False
+
+rotation_step: 20
 

@@ -1,21 +1,36 @@
 import os
-import sys
 from os.path import join, basename
 import random
 import yaml
 import bpy
+import sys
+
+THIS_DIR = bpy.path.abspath("//")
+if THIS_DIR not in sys.path:
+    sys.path.insert(0, THIS_DIR)
+
 renderscript = bpy.data.texts["renderscript.py"].as_module()
 
+
+    
 high_res = (1920, 1080)
 medium_res = (1280, 720)
 low_res = (720, 480)
 
 # key: val list of tuple:
 # val[0]= rbeta range, val[1]= d range, val[2] = deform angle range ,val[3] = Displace strength range
-bend_configuration = {"high": [(-35, 35), (0.45, 0.6), (30, 90), (0, 0)],
-                      "medium": [(-40, 40), (0.47, 0.7), (-30, 30), (0, 0)],
-                      "low": [(-20, 20), (0.5, 0.8), (-90, -30), (0, 0)],
-                      "random": [(-40, 40), (0.45, 0.8), (-90, 90), (0, 0)],
+
+bend_up_configuration = {"high": [(-35, 35), (0.45, 0.6), (60, 90), (0, 0)],
+                      "medium": [(-35, 35), (0.45, 0.6), (30, 60), (0, 0)],
+                      "low": [(-40, 40), (0.47, 0.7), (0, 30), (0, 0)],
+                      "random": [(-40, 40), (0.45, 0.7), (0, 90), (0, 0)],
+                      "flat": [(-40, 40), (0.4, 0.8), (0, 0), (0, 0)]}
+
+
+bend_down_configuration = {"high": [(-20, 20), (0.5, 0.8), (-90, -60), (0, 0)],
+                      "medium": [(-20, 20), (0.5, 0.8), (-60, -30), (0, 0)],
+                      "low": [(-40, 40), (0.47, 0.7), (-30, 0), (0, 0)],
+                      "random": [(-40, 40), (0.47, 0.8), (-90, 0), (0, 0)],
                       "flat": [(-40, 40), (0.4, 0.8), (0, 0), (0, 0)]}
 
 wrinkled_configuration = {"high": [(-20, 20), (0.5, 0.7), (0, 0), (0.5, 0.8)],
@@ -26,11 +41,11 @@ wrinkled_configuration = {"high": [(-20, 20), (0.5, 0.7), (0, 0), (0.5, 0.8)],
 
 def flat(generator, frames):
     generator.set_scene()
-    val = bend_configuration["flat"]
+    val = bend_up_configuration["flat"]
     generator.main_rendering_loop(val, frames)
 
 
-def bend(generator, level, deform_axis, quantity):
+def bend(generator, level, deform_axis, quantity, bend_configuration):
     """
     Generate bend images on the two side of image according to the given
     axi( X or Z). Z axi bend image across the length and X axi across the width.
@@ -78,11 +93,11 @@ def fold(img_generator, deform_axis, level, quantity):
 
     img_generator.set_scene()
     img_generator.set_subdivision()
-    val = bend_configuration[level]
+    val = bend_up_configuration[level]
     img_generator.main_rendering_loop(val, quantity, deform_axis)
 
 
-def bend_wrinkled(img_generator, deform_axis, bend_level, wrinkle_level, quantity):
+def bend_wrinkled(img_generator, deform_axis, bend_level, wrinkle_level, quantity,bend_configuration):
     """
     Generate bend images with crease.The shooting angle, lighting, bend angele,crease strength and
     background varying from image to image.
@@ -118,6 +133,7 @@ def is_valid_path(path):
 
 
 def create_output_folder(image_path, out_put_path, fun_name):
+    image_path = os.path.splitext(image_path)[0]
     img_name = basename(image_path)
     dir_name = fun_name + "_" + img_name
     dir_path = join(out_put_path, dir_name)
@@ -127,6 +143,13 @@ def create_output_folder(image_path, out_put_path, fun_name):
         print(error)
     return dir_path
 
+def create_arg_parser():
+    # Creates and returns the ArgumentParser object
+
+    parser = argparse.ArgumentParser(description='Description of your app.')
+    parser.add_argument('inputYAMLfile',
+                    help='Path to the input directory.')
+    return parser
 
 if __name__ == "__main__":
     argv = sys.argv
@@ -134,10 +157,12 @@ if __name__ == "__main__":
     with open(argv[0]) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
         input_files = data['input']
-        path = input_files['image_path']
-        jpath = input_files['groundtruth_path']
+        images_folder = input_files['image_folder_path']
+        json_folder = input_files['groundtruth_folder_path']
         output_file = data['output']['out_dir']
-        samples = data['output']['num_samples']
+        if not os.path.exists(output_file):
+            os.makedirs(output_file)
+        samples = data['output']['num_samples_per_image']
         shape = data['shape']
         light_colors = data['light_colors']
         obj_shadow = data['object_shadow']
@@ -147,54 +172,75 @@ if __name__ == "__main__":
         draw_mode = data['draw_labels']
         engine_name = data['render_engine']
         render_samples = data['render_samples']
-        img_generator = renderscript.ImageGenerator(res, draw_mode, light_colors, obj_shadow)
-        img_generator.load_document_image(path)
-        img_generator.set_bbs(jpath)
-        img_generator.set_render_engine(engine_name, render_samples)
-        # flat shape
-        flat_dict = shape['flat']
-        quantity = int(flat_dict['probability'] * samples)
-        if quantity > 0:
-            output_dir = create_output_folder(path, output_file, "flat")
-            img_generator.set_output_dir_path(output_dir)
-            flat(img_generator, quantity)
+        camera_rand = data['camera_random_mode']
+        rotation_step = data['rotation_step']
+        for image in os.listdir(images_folder):
+            image_path = os.path.join(images_folder, image)
+            json_path = os.path.join(json_folder,image)
+            json_path = os.path.splitext(json_path)[0] + ".json"
+            img_generator = renderscript.ImageGenerator(res, draw_mode, light_colors, obj_shadow,camera_rand,rotation_step)
+            img_generator.load_document_image(image_path)
+            img_generator.set_bbs(json_path)
+            img_generator.set_render_engine(engine_name, render_samples)
+            # flat shape
+            flat_dict = shape['flat']
+            quantity = int(flat_dict['probability'] * samples)
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "flat")
+                img_generator.set_output_dir_path(output_dir)
+                flat(img_generator, quantity)
 
-        # bended shape
-        bended = shape['bended']
-        quantity = int(bended['probability'] * samples)
-        level = bended['level']
-        deform_axis = bended['side']
-        if quantity > 0:
-            output_dir = create_output_folder(path, output_file, "bended")
-            img_generator.set_output_dir_path(output_dir)
-            bend(img_generator, level, deform_axis, quantity)
+            # bended_up shape
+            bended_up = shape['bended_up']
+            quantity = int(bended_up['probability'] * samples)
+            level = bended_up['level']
+            deform_axis = bended_up['side']
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "bended_up")
+                img_generator.set_output_dir_path(output_dir)
+                bend(img_generator, level, deform_axis, quantity,bend_up_configuration)
 
-        # wrinkled shape
-        wrinkle = shape['wrinkled']
-        quantity = int(wrinkle['probability'] * samples)
-        level = wrinkle['level']
-        if quantity > 0:
-            output_dir = create_output_folder(path, output_file, "wrinkled")
-            img_generator.set_output_dir_path(output_dir)
-            wrinkled(img_generator, level, quantity)
+            # bended_down shape
+            bended_down = shape['bended_down']
+            quantity = int(bended_down['probability'] * samples)
+            level = bended_down['level']
+            deform_axis = bended_down['side']
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "bended_down")
+                img_generator.set_output_dir_path(output_dir)
+                bend(img_generator, level, deform_axis, quantity, bend_down_configuration)
 
-        # folded shape
-        folded_dict = shape['folded']
-        quantity = int(folded_dict['probability'] * samples)
-        level = folded_dict['level']
-        deform_axis = folded_dict['side']
-        if quantity > 0:
-            output_dir = create_output_folder(path, output_file, "folded")
-            img_generator.set_output_dir_path(output_dir)
-            fold(img_generator, deform_axis, level, quantity)
+            # wrinkled shape
+            wrinkle = shape['wrinkled']
+            quantity = int(wrinkle['probability'] * samples)
+            level = wrinkle['level']
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "wrinkled")
+                img_generator.set_output_dir_path(output_dir)
+                wrinkled(img_generator, level, quantity)
 
-        # mixed shape
-        mixed = shape['mixed']
-        quantity = int(mixed['probability']*samples)
-        bend_level = mixed['bend_level']
-        wrinkle_level = mixed['wrinkle_level']
-        deform_axis = mixed['bend_side']
-        if quantity > 0:
-            output_dir = create_output_folder(path, output_file, "mixed")
-            img_generator.set_output_dir_path(output_dir)
-            bend_wrinkled(img_generator, deform_axis, bend_level, wrinkle_level, quantity)
+            # folded shape
+            folded_dict = shape['folded']
+            quantity = int(folded_dict['probability'] * samples)
+            level = folded_dict['level']
+            deform_axis = folded_dict['side']
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "folded")
+                img_generator.set_output_dir_path(output_dir)
+                fold(img_generator, deform_axis, level, quantity)
+
+            # mixed shape
+            mixed = shape['mixed']
+            bend_mode = mixed['bend_mode']
+            if bend_mode == 'up':
+                bend_config = bend_up_configuration
+            else:
+                bend_config= bend_down_configuration
+            quantity = int(mixed['probability']*samples)
+            bend_level = mixed['bend_level']
+            wrinkle_level = mixed['wrinkle_level']
+            deform_axis = mixed['bend_side']
+            if quantity > 0:
+                output_dir = create_output_folder(image_path, output_file, "mixed")
+                img_generator.set_output_dir_path(output_dir)
+                bend_wrinkled(img_generator, deform_axis, bend_level, wrinkle_level, quantity,bend_config)
