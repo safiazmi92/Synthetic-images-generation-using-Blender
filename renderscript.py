@@ -50,9 +50,9 @@ class ImageGenerator:
         self.cube = bpy.data.objects['cube']
         self.table_mat = bpy.data.materials["table_background"]
         self.receipt_mat = bpy.data.materials["receipt"]
-		self.plant_aloe = bpy.data.materials["plant_aloe"]
-		self.aloe_pot = bpy.data.materials["aloe_pot"]
-		self.cup_texture = bpy.data.materials["Material"]
+        self.plant_aloe = bpy.data.materials["plant_aloe"]
+        self.aloe_pot = bpy.data.materials["aloe_pot"]
+        self.cup_texture = bpy.data.materials["Material"]
         self.world_mat = bpy.data.worlds["World"]
         self.resolution = resolution
         self.draw = draw
