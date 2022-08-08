@@ -123,8 +123,8 @@ input:
   
 output:
   out_dir: path_to_output_folder
-  # The number of images to generate
-  num_samples: 500
+  # The number of images to generate per image
+  num_samples_per_image: 500
  
  # Choose the shapes of the generated image
  # The quantity of specific shape equals to num_samples*probability. for exampel 
@@ -136,7 +136,11 @@ output:
 shape:
   flat:
     probability: num 
-  bended: 
+  bended_up: 
+    level: high
+    probability: num
+    side: X/Z
+  bended_down: 
     level: high/low/medium
     probability: num
     side: X/Z
@@ -148,10 +152,11 @@ shape:
     probability: num
     side: X/Z
   mixed: 
-    bend_level:
-    bend_side: width/height
-    wrinkle_level: 
-    probability:
+    bend_mode: up/down
+    bend_level: high/low/medium
+    bend_side: X/Z
+    wrinkle_level: high/low/medium
+    probability: num
 # Render resolution: 1-width_res 2-higth_res. Choose the output resolution as
 # It fit your needs. We recommend 1920*1080
 render_resolution_1: 1920
@@ -175,6 +180,11 @@ render_engine : BLENDER_EEVEE/CYCLES
 # recommend 100.
 # If you choose eevee it dosnt matter as we dont check this value.  
 render_samples : 0
+# Choose whether you want the camera loop and generate images = False or just take a random shots without looping = True
+camera_random_mode : False
+# If you choose the camera to loop then rotation step is the step val in the loop that increases the angle of the camera 
+# from Z and Y axis 1<=num<=359 
+rotation_step: num
 ```
 
 * Open cmd/terminal
